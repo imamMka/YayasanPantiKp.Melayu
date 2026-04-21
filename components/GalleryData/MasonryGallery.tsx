@@ -19,7 +19,7 @@ export default function MasonryGallery() {
           <div key={item.id} className="break-inside-avoid">
             {/* 2. Link harus mengarah ke /Gallery/Preview/[id] */}
             <Link
-              href={`/Gallery/Preview/${item.id}`}
+              href={`/Gallery/preview/${item.id}`}
               className="relative block overflow-hidden rounded-2xl group"
             >
               {/* Placeholder Gambar */}

@@ -9,15 +9,15 @@ export default async function GalleryDetailPage(props: {
   const id = params.id;
 
   return (
-    <main className="bg-black min-h-screen flex flex-col items-center justify-center p-10 relative text-white">
+    <main className="bg-[#F9F6F0] min-h-screen flex flex-col items-center justify-center p-10 relative text-white">
       <Link
         href="/Gallery"
-        className="absolute top-10 left-10 font-bold hover:text-[#C58058]"
+        className="absolute top-10 left-10 font-bold text-[#C58058]"
       >
         ✕ CLOSE
       </Link>
       <div className="max-w-5xl w-full">
-        <div className="aspect-video bg-gray-900 rounded-2xl flex items-center justify-center border border-white/10">
+        <div className="aspect-video bg-gray-500 rounded-2xl flex items-center justify-center border border-white/10">
           <h2 className="text-2xl">ID FOTO: {id}</h2>
         </div>
       </div>

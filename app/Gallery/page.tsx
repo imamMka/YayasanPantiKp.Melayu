@@ -1,6 +1,6 @@
-import GalleryHero from "./GalleryHero";
-import AlbumPerTahun from "./AlbumPerTahun";
-import MasonryGallery from "./MasonryGallery";
+import GalleryHero from "../../components/GalleryData/GalleryHero";
+import AlbumPerTahun from "../../components/GalleryData/AlbumPerTahun";
+import MasonryGallery from "../../components/GalleryData/MasonryGallery";
 
 export default function GaleriPage() {
   return (

@@ -1,4 +1,8 @@
-export default function NewsContent() {
+interface NewsContentProps {
+  slug: string;
+}
+
+export default function NewsContent({ slug }: NewsContentProps) {
   return (
     <article className="p-8 md:p-12 pt-0 text-gray-600 leading-relaxed space-y-6">
       <p>

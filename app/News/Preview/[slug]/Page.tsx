@@ -1,23 +1,33 @@
+// app/News/preview/[slug]/page.tsx
 import Link from "next/link";
-// Keluar dari [slug], lalu keluar dari Preview untuk ambil komponen
-import NewsHeader from "../NewsHeader";
-import NewsContent from "../NewsContent";
-import RelatedArticles from "../RelatedArtickel"; // Sesuaikan dengan typo 'Artickel' di folder kamu
+// Pakai @/ biar path-nya bersih dan nggak pusing ngitung ../../../../
+import NewsHeader from "@/components/NewsData/preview/NewsHeader";
+import NewsContent from "@/components/NewsData/preview/NewsContent";
+import RelatedArticles from "@/components/NewsData/preview/RelatedArticles";
 
-export default function PreviewPage({ params }: { params: { slug: string } }) {
+// WAJIB tambahkan 'async' di depan function
+export default async function PreviewPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>; // Type params di Next 15 itu Promise
+}) {
+  // WAJIB await params sebelum dipakai
+  const { slug } = await params;
+
   return (
     <main className="bg-[#F9F6F0] min-h-screen">
       <div className="container mx-auto px-6 py-8">
         <Link
           href="/News"
-          className="flex items-center gap-2 text-[#C58058] font-bold text-xs mb-8 hover:opacity-70 transition-opacity"
+          className="flex items-center gap-2 text-[#C58058] font-bold text-xs mb-8 hover:opacity-70 transition-opacity w-fit"
         >
           <span className="text-lg">‹</span> KEMBALI
         </Link>
 
         <div className="max-w-4xl mx-auto bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
-          <NewsHeader />
-          <NewsContent />
+          {/* Kirim slug ke komponen kalau butuh fetch data di dalemnya */}
+          <NewsHeader slug={slug} />
+          <NewsContent slug={slug} />
         </div>
 
         <RelatedArticles />

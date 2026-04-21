@@ -1,7 +1,7 @@
-import NewsHero from "./NewsHero";
-import NewsFilter from "./NewsFilter";
-import NewsGrid from "./NewsGrid";
-import NewsSidebar from "./NewsSideBar";
+import NewsHero from "../../components/NewsData/NewsHero";
+import NewsFilter from "../../components/NewsData/NewsFilter";
+import NewsGrid from "../../components/NewsData/NewsGrid";
+import NewsSidebar from "../../components/NewsData/NewsSideBar";
 
 export default function NewsPage() {
   return (

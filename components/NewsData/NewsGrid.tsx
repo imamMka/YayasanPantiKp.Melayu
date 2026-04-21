@@ -20,7 +20,7 @@ function ArticleCard({
   return (
     <Link
       // SOLUSI: Tambahkan /Preview/ sebelum ${slug} agar sesuai dengan struktur folder Anda
-      href={`/News/Preview/${slug}`}
+      href={`/News/preview/${slug}`}
       className={`group block cursor-pointer ${isLarge ? "mb-12" : ""}`}
     >
       <div
@@ -57,43 +57,49 @@ function ArticleCard({
   );
 }
 
+const newsData = [
+  { slug: "kunjungan-donatur-april", title: "Kunjungan Donatur..." },
+  { slug: "pembangunan-asrama-baru", title: "Proses Pembangunan..." },
+];
+
 export default function NewsGrid() {
   return (
     <div>
-      {/* Featured News */}
+      {/* Featured News - Langsung panggil ArticleCard tanpa bungkus Link lagi */}
       <ArticleCard
         isLarge
         category="Pendidikan"
-        slug="dito-podium-olimpiade"
-        title="Dito, dari panti asuhan ke podium olimpiade — sebuah perjalanan yang mengubah segalanya"
-        desc="Tidak ada yang menyangka anak pemalu yang datang tiga tahun lalu itu kini berdiri di depan 200 peserta dari seluruh kecamatan membawa pulang medali emas olimpiade matematika..."
+        slug="dito-podium-olimpiade" // Slug dikirim ke sini
+        title="Dito, dari panti asuhan ke podium olimpiade..."
+        desc="Tidak ada yang menyangka anak pemalu..."
         date="28 Agustus 2026"
       />
 
       {/* Standard Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+        {/* ArticleCard sudah punya Link di dalamnya, jadi tinggal kirim data aja */}
         <ArticleCard
           category="Kesehatan"
           slug="pemeriksaan-gizi-rutin"
-          title="Pemeriksaan gizi rutin: 94% anak asuh kini berstatus gizi baik"
+          title="Pemeriksaan gizi rutin: 94% anak asuh..."
           date="26 Juli 2026"
         />
         <ArticleCard
           category="Penyaluran Dana"
           slug="laporan-dana-mei-2025"
-          title="Laporan penyaluran dana Mei 2025 — Rp 8,8 Juta untuk 47 anak"
+          title="Laporan penyaluran dana Mei 2025..."
           date="26 Juli 2026"
         />
         <ArticleCard
           category="Donasi"
           slug="sari-lulus-snbt"
-          title="Sari lulus SNBT dengan beasiswa penuh — bangga kami yang tak terbendung"
+          title="Sari lulus SNBT dengan beasiswa penuh..."
           date="26 Juli 2026"
         />
         <ArticleCard
           category="Pendidikan"
           slug="program-bimbel-gratis"
-          title="Program bimbel gratis dimulai — 3 relawan pengajar bergabung bulan ini"
+          title="Program bimbel gratis dimulai..."
           date="26 Juli 2026"
         />
       </div>

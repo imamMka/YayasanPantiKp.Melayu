@@ -1,10 +1,10 @@
-import ProfileHero from "./HeroProfile";
-import History from "./History";
-import VisiMisi from "./VisiMisi";
-import StrukturOrganisasi from "./SturkturOrganisasi";
-import Fasilitas from "./Fasilitas";
-import Legalitas from "./Legalitas";
-import Contact from "./Contact";
+import ProfileHero from "../../components/ProfileData/HeroProfile";
+import History from "../../components/ProfileData/History";
+import VisiMisi from "../../components/ProfileData/VisiMisi";
+import StrukturOrganisasi from "../../components/ProfileData/SturkturOrganisasi";
+import Fasilitas from "../../components/ProfileData/Fasilitas";
+import Legalitas from "../../components/ProfileData/Legalitas";
+import Contact from "../../components/ProfileData/Contact";
 
 export default function ProfilePage() {
   return (

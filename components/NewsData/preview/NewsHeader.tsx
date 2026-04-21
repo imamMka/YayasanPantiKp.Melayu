@@ -1,4 +1,8 @@
-export default function NewsHeader() {
+interface NewsHeaderProps {
+  slug: string;
+}
+
+export default function NewsHeader({ slug }: NewsHeaderProps) {
   return (
     <section>
       {/* Image Banner */}
