@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link"; // Tambahkan import Link
+import Link from "next/link";
 
 interface SocialPlatform {
   name: string;
@@ -7,9 +7,9 @@ interface SocialPlatform {
 }
 
 const platforms: SocialPlatform[] = [
-  { name: "Instagram", url: "https://instagram.com" }, // Sebaiknya isi URL asli
-  { name: "Youtube", url: "https://youtube.com" },
-  { name: "Facebook", url: "https://facebook.com" },
+  { name: "instagram", url: "https://instagram.com" },
+  { name: "youtube", url: "https://youtube.com" },
+  { name: "facebook", url: "https://facebook.com" },
 ];
 
 export const Socials: React.FC = () => {
@@ -22,9 +22,6 @@ export const Socials: React.FC = () => {
 
         <div className="flex gap-3">
           {platforms.map((soc) => (
-            /* Untuk link eksternal (sosmed), tetap gunakan <a> 
-               tapi tambahkan target="_blank" agar tidak menutup web utama
-            */
             <a
               key={soc.name}
               href={soc.url}
@@ -32,7 +29,7 @@ export const Socials: React.FC = () => {
               rel="noopener noreferrer"
               className="px-6 py-1.5 rounded-xl text-[20px] md:text-[24px] tracking-widest
                          bg-[#C4714A] text-white
-                         hover:bg-[#5E4134] hover:text-white transition-all duration-300"
+                         hover:bg-[#5E4134] hover:text-white transition-all duration-300 capitalize"
             >
               {soc.name}
             </a>
@@ -48,8 +45,7 @@ export const Footer: React.FC = () => {
     <footer className="bg-[#2d2d2d] text-white py-16">
       <div className="container mx-auto px-6 flex flex-col lg:flex-row justify-between items-start gap-12">
         <div className="lg:col-span-2 flex flex-row items-start gap-6 justify-between">
-          {/* Logo juga bisa diarahkan ke Home */}
-          <div className="w-25 h-25 bg-green-200 rounded-full"></div>
+          <div className="w-20 h-20 bg-green-200 rounded-full shrink-0"></div>
           <Link href="/" className="flex flex-col items-start gap-3 mb-4 group">
             <h2 className="text-[48px] md:text-[64px] font-semibold leading-tight group-hover:text-gray-300 transition-colors">
               Panti Asuhan
@@ -63,20 +59,21 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="flex flex-col md:flex-row gap-12 justify-between">
-          {/* Navigasi Internal */}
+          {/* Navigasi Internal - Semua Href & Logic Huruf Kecil */}
           <ul className="space-y-2 text-white text-[20px] md:text-[24px] w-fit">
-            {["Home", "Profile", "News", "Gallery"].map((item) => (
+            {["home", "profile", "news", "gallery"].map((item) => (
               <li key={item}>
                 <Link
-                  href={item === "Home" ? "/" : `/${item}`}
-                  className="hover:text-orange-400 transition-colors "
+                  href={item === "home" ? "/" : `/${item}`}
+                  className="hover:text-orange-400 transition-colors capitalize"
                 >
-                  {item === "Profile"
-                    ? "Profil"
-                    : item === "News"
-                      ? "Berita"
-                      : item === "Gallery"
-                        ? "Galeri"
+                  {/* Logic translasi ke Bahasa Indonesia */}
+                  {item === "profile"
+                    ? "profil"
+                    : item === "news"
+                      ? "berita"
+                      : item === "gallery"
+                        ? "galeri"
                         : item}
                 </Link>
               </li>
@@ -85,12 +82,13 @@ export const Footer: React.FC = () => {
 
           {/* Navigasi Eksternal Sosial Media */}
           <ul className="space-y-2 text-white text-[20px] md:text-[24px]">
-            {["Instagram", "Facebook", "Youtube", "X.com"].map((item) => (
+            {["instagram", "facebook", "youtube", "x.com"].map((item) => (
               <li key={item}>
                 <a
                   href="#"
                   target="_blank"
-                  className="hover:text-orange-400 transition-colors"
+                  rel="noopener noreferrer"
+                  className="hover:text-orange-400 transition-colors capitalize"
                 >
                   {item}
                 </a>
