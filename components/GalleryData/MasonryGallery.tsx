@@ -83,7 +83,7 @@ export default function MasonryGallery() {
         {GALLERY_IMAGES.map((item) => (
           <div key={item.id} className="break-inside-avoid">
             <Link
-              href={`/Gallery/preview/${item.id}`}
+              href={`/gallery/preview/${item.id}`}
               className="relative block overflow-hidden rounded-2xl group"
             >
               {/* Jika mode List, kita paksa height-nya konsisten (misal h-64) agar tidak terlalu panjang */}

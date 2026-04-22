@@ -20,7 +20,7 @@ function ArticleCard({
   return (
     <Link
       // SOLUSI: Tambahkan /Preview/ sebelum ${slug} agar sesuai dengan struktur folder Anda
-      href={`/News/preview/${slug}`}
+      href={`/news/preview/${slug}`}
       className={`group block cursor-pointer border-2 border-[#E8E2D6] rounded-2xl hover:bg-[#E8E2D6]/20 duration-500 transition-transform ${isLarge ? "mb-12" : ""}`}
     >
       <div
