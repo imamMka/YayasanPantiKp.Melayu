@@ -4,6 +4,7 @@ import News from "../components/HomeData/News";
 import Gallery from "../components/HomeData/Gallery";
 import DonationTransparancy from "../components/HomeData/DonationTransparancy";
 import Contact from "../components/HomeData/Contact";
+import { Socials } from "@/components/Footer";
 
 export default function Homepage() {
   return (
@@ -14,6 +15,7 @@ export default function Homepage() {
       <Gallery />
       <DonationTransparancy />
       <Contact />
+      <Socials />
     </main>
   );
 }

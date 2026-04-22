@@ -27,11 +27,14 @@ const articles: Article[] = [
 const News: React.FC = () => {
   return (
     <section className="container mx-auto px-6 py-16">
-      <div className="flex justify-between items-end mb-8">
-        <h2 className="text-3xl font-bold text-[#2D3E33]">
+      <div className="flex md:flex-row flex-col justify-between md:items-center items-start mb-8">
+        <h2 className="text-[48px] md:text-[64px] font-semibold text-[#2D2D2D]">
           Berita & Kegiatan Terbaru
         </h2>
-        <a href="#" className="text-orange-600 text-sm font-semibold">
+        <a
+          href="#"
+          className="text-[#C4714A] text-[20px] md:text-[24px] font-semibold"
+        >
           Selengkapnya &rarr;
         </a>
       </div>

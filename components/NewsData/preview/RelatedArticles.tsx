@@ -6,7 +6,7 @@ export default function RelatedArticles() {
 
   return (
     <section className="mt-16">
-      <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6">
+      <h4 className="text-[20px] md:text-[24px] font-semibold text-[#2D2D2D] tracking-widest mb-6">
         Artikel Terkait
       </h4>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -17,10 +17,10 @@ export default function RelatedArticles() {
           >
             <div className="w-16 h-16 bg-gray-200 rounded-xl flex-none overflow-hidden" />
             <div>
-              <h5 className="text-xs font-bold text-[#2D3E33] leading-snug group-hover:text-[#C58058] transition-colors">
+              <h5 className="text-[20px] md:text-[24px] font-semibold text-[#6E6E6E] leading-snug group-hover:text-[#C4714A] transition-colors">
                 {art.title}
               </h5>
-              <p className="text-[10px] text-gray-400 mt-1">{art.date}</p>
+              <p className="text-[14px] text-gray-400 mt-1">{art.date}</p>
             </div>
           </div>
         ))}

@@ -34,13 +34,13 @@ const dataFasilitas = [
 export default function Fasilitas() {
   return (
     <section className="container mx-auto px-6 py-20">
-      <p className="text-xs text-gray-400 uppercase tracking-widest mb-2">
+      <p className="text-[20px] md:text-[24px] font-semibold text-[#4A6B55] uppercase tracking-widest mb-2">
         Fasilitas
       </p>
-      <h2 className="text-3xl font-bold text-[#2D3E33] mb-4">
+      <h2 className="text-[48px] md:text-[64px] font-semibold text-[#2D2D2D] mb-4">
         Lingkungan yang layak untuk bertumbuh
       </h2>
-      <p className="text-gray-600 mb-12 max-w-xl">
+      <p className="text-[#6E6E6E] text-[20px] md:text-[24px] mb-12 max-w-xl">
         Kami terus berupaya menyediakan fasilitas yang aman, bersih, dan
         mendukung perkembangan aspek kognitif anak-anak.
       </p>
@@ -54,8 +54,10 @@ export default function Fasilitas() {
               {item.icon}
             </div>
             <div>
-              <h4 className="font-bold text-[#2D3E33] mb-2">{item.title}</h4>
-              <p className="text-sm text-gray-500 leading-relaxed">
+              <h4 className="font-semibold text-[20px] md:text-[24px] text-[#6E6E6E] mb-2">
+                {item.title}
+              </h4>
+              <p className="text-[20px] md:text-[24px] text-[#6E6E6E] leading-relaxed">
                 {item.desc}
               </p>
             </div>

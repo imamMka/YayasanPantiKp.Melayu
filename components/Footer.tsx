@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link"; // Tambahkan import Link
 
 interface SocialPlatform {
   name: string;
@@ -6,28 +7,31 @@ interface SocialPlatform {
 }
 
 const platforms: SocialPlatform[] = [
-  { name: "Instagram", url: "#" },
-  { name: "Youtube", url: "#" },
-  { name: "Facebook", url: "#" },
+  { name: "Instagram", url: "https://instagram.com" }, // Sebaiknya isi URL asli
+  { name: "Youtube", url: "https://youtube.com" },
+  { name: "Facebook", url: "https://facebook.com" },
 ];
 
 export const Socials: React.FC = () => {
   return (
-    <section className="bg-[#262626] border-t border-white/5 py-4 px-6">
+    <section className="bg-[#262626] border-t border-white/5 py-4 px-6 m-10 rounded-lg">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-        {/* Teks Kiri */}
-        <p className="text-white text-sm font-medium tracking-wide">
+        <p className="text-white text-[20px] md:text-[24px] font-medium tracking-wide">
           Ikuti perkembangan kami
         </p>
 
-        {/* Tombol-tombol Sosial Media */}
         <div className="flex gap-3">
           {platforms.map((soc) => (
+            /* Untuk link eksternal (sosmed), tetap gunakan <a> 
+               tapi tambahkan target="_blank" agar tidak menutup web utama
+            */
             <a
               key={soc.name}
               href={soc.url}
-              className="px-6 py-1.5 rounded text-[11px] font-bold uppercase tracking-widest
-                         bg-[#4A3228] text-[#D9A282] border border-[#5E4134]
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-1.5 rounded-xl text-[20px] md:text-[24px] tracking-widest
+                         bg-[#C4714A] text-white
                          hover:bg-[#5E4134] hover:text-white transition-all duration-300"
             >
               {soc.name}
@@ -41,38 +45,71 @@ export const Socials: React.FC = () => {
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#1A1A1A] text-white py-16">
-      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-        <div className="lg:col-span-2">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-green-200 rounded-full"></div>
-            <h2 className="text-xl font-bold">
+    <footer className="bg-[#2d2d2d] text-white py-16">
+      <div className="container mx-auto px-6 flex flex-col lg:flex-row justify-between items-start gap-12">
+        <div className="lg:col-span-2 flex flex-row items-start gap-6 justify-between">
+          {/* Logo juga bisa diarahkan ke Home */}
+          <div className="w-25 h-25 bg-green-200 rounded-full"></div>
+          <Link href="/" className="flex flex-col items-start gap-3 mb-4 group">
+            <h2 className="text-[48px] md:text-[64px] font-semibold leading-tight group-hover:text-gray-300 transition-colors">
               Panti Asuhan
               <br />
               Kampung Melayu
             </h2>
-          </div>
-          <p className="text-gray-500 text-sm">Terdaftar Kemenkumham</p>
+            <p className="text-white text-[20px] md:text-[24px]">
+              Terdaftar Kemenkumham
+            </p>
+          </Link>
         </div>
-        <div className="grid grid-cols-2 gap-8 lg:col-span-2">
-          <ul className="space-y-2 text-gray-400 text-sm">
-            {["Home", "Profil", "Berita", "Galeri"].map((item) => (
+
+        <div className="flex flex-col md:flex-row gap-12 justify-between">
+          {/* Navigasi Internal */}
+          <ul className="space-y-2 text-white text-[20px] md:text-[24px] w-fit">
+            {["Home", "Profile", "News", "Gallery"].map((item) => (
               <li key={item}>
-                <a href="#">{item}</a>
+                <Link
+                  href={item === "Home" ? "/" : `/${item}`}
+                  className="hover:text-orange-400 transition-colors "
+                >
+                  {item === "Profile"
+                    ? "Profil"
+                    : item === "News"
+                      ? "Berita"
+                      : item === "Gallery"
+                        ? "Galeri"
+                        : item}
+                </Link>
               </li>
             ))}
           </ul>
-          <ul className="space-y-2 text-gray-400 text-sm">
+
+          {/* Navigasi Eksternal Sosial Media */}
+          <ul className="space-y-2 text-white text-[20px] md:text-[24px]">
             {["Instagram", "Facebook", "Youtube", "X.com"].map((item) => (
               <li key={item}>
-                <a href="#">{item}</a>
+                <a
+                  href="#"
+                  target="_blank"
+                  className="hover:text-orange-400 transition-colors"
+                >
+                  {item}
+                </a>
               </li>
             ))}
           </ul>
         </div>
       </div>
-      <div className="text-center mt-12 pt-8 border-t border-gray-800 text-[10px] text-gray-600">
-        Copyright © 2026 Panti Asuhan Kampung Melayu
+
+      <div className="text-center border-t border-gray-800 text-[14px] text-white mt-12 pt-4">
+        Copyright ©2026 Panti Asuhan Kp. Melayu. All Rights Reserved. Powered By{" "}
+        <a
+          href="https://imammka.netlify.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-bold text-orange-400 hover:text-orange-300"
+        >
+          KOIStudio
+        </a>
       </div>
     </footer>
   );

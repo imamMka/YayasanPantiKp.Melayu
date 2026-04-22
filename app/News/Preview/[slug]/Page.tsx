@@ -15,16 +15,16 @@ export default async function PreviewPage({
   const { slug } = await params;
 
   return (
-    <main className="bg-[#F9F6F0] min-h-screen">
+    <main className="bg-[#F9F6F0] min-h-screen ">
       <div className="container mx-auto px-6 py-8">
         <Link
           href="/News"
-          className="flex items-center gap-2 text-[#C58058] font-bold text-xs mb-8 hover:opacity-70 transition-opacity w-fit"
+          className="flex items-center gap-2 text-[#C4714A] font-bold text-[20px] md:text-[24px] mb-8 hover:opacity-70 transition-opacity w-fit"
         >
-          <span className="text-lg">‹</span> KEMBALI
+          ‹ KEMBALI
         </Link>
 
-        <div className="max-w-4xl mx-auto bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+        <div className="max-w-full mx-auto bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
           {/* Kirim slug ke komponen kalau butuh fetch data di dalemnya */}
           <NewsHeader slug={slug} />
           <NewsContent slug={slug} />

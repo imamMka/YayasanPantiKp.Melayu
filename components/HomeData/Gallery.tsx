@@ -17,11 +17,13 @@ const Gallery: React.FC = () => {
   return (
     <section className="container mx-auto px-6 py-16">
       {/* Header Section */}
-      <div className="flex justify-between items-end mb-8">
-        <h2 className="text-3xl font-bold text-[#2D3E33]">Galeri Kegiatan</h2>
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+        <h2 className="text-[48px] md:text-[64px] font-semibold text-[#2D2D2D]">
+          Galeri Kegiatan
+        </h2>
         <a
           href="#"
-          className="text-orange-600 text-sm font-semibold hover:underline flex items-center gap-1"
+          className="text-[#C4714A] text-[20px] md:text-[24px] font-semibold hover:underline flex items-center gap-1"
         >
           Selengkapnya
           <span className="text-lg">›</span>

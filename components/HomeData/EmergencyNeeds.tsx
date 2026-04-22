@@ -15,28 +15,28 @@ const needs: NeedItem[] = [
 
 const EmergencyNeeds: React.FC = () => {
   return (
-    <section className="w-full border-y border-gray-200/60 bg-[#F9F6F0]">
+    <section className="w-full border-y border-[#E8E2D6] bg-white">
       <div className="container mx-auto">
         {/* Container dengan overflow-x-auto agar bisa di-scroll di HP */}
-        <div className="flex overflow-x-auto no-scrollbar items-center divide-x divide-gray-200">
+        <div className="flex no-scrollbar items-center divide-x divide-[#E8E2D6]">
           {needs.map((item) => (
             <div
               key={item.id}
               className="flex-none flex items-center gap-2 px-6 py-4 hover:bg-white/50 transition-colors cursor-pointer group"
             >
               {/* Dot Indicator */}
-              <div className="relative flex h-2 w-2">
+              <div className="relative flex h-3 w-3">
                 {item.isUrgent && (
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                 )}
                 <span
-                  className={`relative inline-flex rounded-full h-2 w-2 ${item.isUrgent ? "bg-red-600" : "bg-orange-400"}`}
+                  className={`relative inline-flex rounded-full h-3 w-3 ${item.isUrgent ? "bg-red-600" : "bg-orange-400"}`}
                 ></span>
               </div>
 
               {/* Text Label */}
               <span
-                className={`text-[13px] font-medium whitespace-nowrap ${item.isUrgent ? "text-red-700" : "text-gray-600"}`}
+                className={`text-[20px] md:text-[24px] font-medium whitespace-nowrap ${item.isUrgent ? "text-red-700" : "text-gray-600"}`}
               >
                 {item.label}
               </span>

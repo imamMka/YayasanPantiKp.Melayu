@@ -8,7 +8,9 @@ const albums = [
 export default function AlbumPerTahun() {
   return (
     <section className="mb-20">
-      <h2 className="text-2xl font-bold text-[#2D3E33] mb-8">Album pertahun</h2>
+      <h2 className="text-[48px] md:text-[64px] font-semibold text-[#2D2D2D] mb-8">
+        Album pertahun
+      </h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {albums.map((album, i) => (
           <div key={i} className="group cursor-pointer">
@@ -21,10 +23,10 @@ export default function AlbumPerTahun() {
                 <div className="aspect-square bg-gray-400 rounded-br-xl rounded-tr-sm" />
               </div>
               <div className="px-2 pb-2">
-                <h4 className="font-bold text-[#2D3E33] text-sm">
+                <h4 className="font-semibold text-[#2D2D2D] text-[20px] md:text-[24px] mb-1 tracking-wide">
                   {album.year}
                 </h4>
-                <p className="text-[10px] text-gray-400 font-medium tracking-wide uppercase">
+                <p className="text-[16px] md:text-[20px] text-[#6E6E6E] tracking-wide">
                   {album.count}
                 </p>
               </div>
