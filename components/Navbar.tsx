@@ -56,25 +56,25 @@ const Navbar: React.FC = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex gap-6 items-center">
           <Link
-            href="/Profile"
+            href="/profile"
             className="text-[20px] hover:text-[#4A6B55] transition-colors"
           >
             Profil
           </Link>
           <Link
-            href="/News"
+            href="/news"
             className="text-[20px] hover:text-[#4A6B55] transition-colors"
           >
             Berita
           </Link>
           <Link
-            href="/Gallery"
+            href="/gallery"
             className="text-[20px] hover:text-[#4A6B55] transition-colors"
           >
             Galeri
           </Link>
           <Link
-            href="/Donation"
+            href="/donation"
             className="text-[20px] bg-[#C4714A] px-5 py-2 rounded-lg hover:bg-[#C4714A]/80 transition-all"
           >
             Donasi Sekarang
@@ -108,7 +108,7 @@ const Navbar: React.FC = () => {
           >
             <div className="flex flex-col items-start px-8 py-10 space-y-8">
               <Link
-                href="/Profile"
+                href="/profile"
                 onClick={() => setIsOpen(false)}
                 className="w-full"
               >
@@ -120,7 +120,7 @@ const Navbar: React.FC = () => {
                 </motion.span>
               </Link>
               <Link
-                href="/News"
+                href="/news"
                 onClick={() => setIsOpen(false)}
                 className="w-full"
               >
@@ -132,7 +132,7 @@ const Navbar: React.FC = () => {
                 </motion.span>
               </Link>
               <Link
-                href="/Gallery"
+                href="/gallery"
                 onClick={() => setIsOpen(false)}
                 className="w-full"
               >
@@ -144,7 +144,7 @@ const Navbar: React.FC = () => {
                 </motion.span>
               </Link>
               <Link
-                href="/Donation"
+                href="/donation"
                 onClick={() => setIsOpen(false)}
                 className="w-full pt-4 border-t border-white/10"
               >
