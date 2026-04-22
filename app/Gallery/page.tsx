@@ -1,6 +1,7 @@
-import GalleryHero from "../../components/GalleryData/GalleryHero";
-import AlbumPerTahun from "../../components/GalleryData/AlbumPerTahun";
-import MasonryGallery from "../../components/GalleryData/MasonryGallery";
+// app/gallery/page.tsx
+import GalleryHero from "@/components/GalleryData/GalleryHero";
+import AlbumPerTahun from "@/components/GalleryData/AlbumPerTahun";
+import MasonryGallery from "@/components/GalleryData/MasonryGallery";
 
 export default function GaleriPage() {
   return (
