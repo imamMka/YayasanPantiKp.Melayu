@@ -1,4 +1,15 @@
+"use client";
+import React from "react";
+
 export default function ProfileHero() {
+  const navigation = [
+    { label: "Sejarah", href: "#history" },
+    { label: "Visi & Misi", href: "#visi-misi" },
+    { label: "Struktur Organisasi", href: "#struktur-organisasi" },
+    { label: "Fasilitas", href: "#fasilitas" },
+    { label: "Legalitas", href: "#legalitas" },
+  ];
+
   return (
     /* 1. Background Image penuh layar dengan overlay agar teks kontras */
     <section className="relative w-full min-h-[60vh] md:min-h-[80vh] flex items-center bg-[url('/panti-4.jpg')] bg-cover bg-center">
@@ -23,12 +34,7 @@ export default function ProfileHero() {
         </p>
 
         <div className="flex flex-wrap gap-4">
-          {[
-            "Struktur Organisasi",
-            "Fasilitas",
-            "Legalitas",
-            "Kontak & Lokasi",
-          ].map((item, i) => (
+          {navigation.map((item, i) => (
             <button
               key={i}
               className={`px-8 py-3 rounded-full text-[16px] md:text-[20px] font-medium transition-all border-2 
@@ -37,8 +43,14 @@ export default function ProfileHero() {
                     ? "bg-[#C3F4D5] border-[#E8E2D6] text-[#2D3E33] shadow-lg scale-105"
                     : "bg-white/10 backdrop-blur-md border-white/50 text-white hover:bg-[#C3F4D5] hover:border-[#C3F4D5] hover:text-[#2D3E33]"
                 }`}
+              onClick={() => {
+                const element = document.querySelector(item.href);
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
             >
-              {item}
+              {item.label}
             </button>
           ))}
         </div>

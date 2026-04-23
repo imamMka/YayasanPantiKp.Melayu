@@ -1,6 +1,9 @@
 export default function VisiMisi() {
   return (
-    <section className="container mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+    <section
+      id="visi-misi"
+      className="container mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-8"
+    >
       <div className="bg-[#D1E7D6]/30 p-10 rounded-2xl border border-[#D1E7D6]">
         <div className="flex items-center gap-4 mb-6">
           <span className="p-3 bg-white rounded-lg">🛡️</span>

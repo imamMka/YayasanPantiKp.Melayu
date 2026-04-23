@@ -1,5 +1,6 @@
 // app/gallery/preview/[id]/page.tsx
 import Link from "next/link";
+import GalleryActions from "@/components/GalleryActions";
 
 const GALLERY_IMAGES = [
   { id: "kegiatan-belajar-1", src: "/panti.jpg" },
@@ -34,6 +35,8 @@ export default async function GalleryDetailPage({ params }: PageProps) {
       </main>
     );
   }
+
+  const displayTitle = decodedId.replace(/-/g, " ");
 
   return (
     <main className="bg-[#F8F9FA] min-h-screen p-6 md:p-12 lg:p-20">
@@ -82,12 +85,7 @@ export default async function GalleryDetailPage({ params }: PageProps) {
             © 2026 Yayasan Panti Asuhan Kampung Melayu
           </p>
           <div className="flex gap-8 font-bold text-xs uppercase tracking-widest">
-            <button className="hover:text-[#C4714A] transition-colors">
-              Bagikan
-            </button>
-            <button className="hover:text-[#C4714A] transition-colors">
-              Simpan Gambar
-            </button>
+            <GalleryActions src={imageData.src} title={displayTitle} />
           </div>
         </div>
       </div>

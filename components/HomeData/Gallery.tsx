@@ -22,7 +22,7 @@ const Gallery: React.FC = () => {
           Galeri Kegiatan
         </h2>
         <a
-          href="#"
+          href="/gallery"
           className="text-[#C4714A] text-[18px] md:text-[22px] font-semibold hover:underline flex items-center gap-1 mt-4 md:mt-0"
         >
           Selengkapnya

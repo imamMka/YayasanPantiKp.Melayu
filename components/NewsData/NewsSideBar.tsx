@@ -1,35 +1,66 @@
+"use client";
+import { useState } from "react";
+import Link from "next/link";
+
 const kategori = ["Pendidikan", "Kesehatan", "Prestasi", "Penyaluran Dana"];
 const jumlahArtikel = ["2", "5", "3", "4"];
 
-// Menyesuaikan data popularNews agar memiliki teks dan path gambar
+// 1. Tambahkan properti slug agar link berfungsi
 const popularNews = [
   {
     title: "Dito raih juara 1 olimpiade matematika",
     img: "/panti.jpg",
+    slug: "dito-podium-olimpiade", // Sesuaikan dengan slug di NewsGrid
   },
   {
     title: "Sari lulus SNBT beasiswa penuh",
     img: "/panti.jpg",
+    slug: "sari-lulus-snbt",
   },
   {
     title: "Program Bimbel Gratis",
     img: "/panti.jpg",
+    slug: "program-bimbel-gratis",
   },
 ];
 
 export default function NewsSidebar() {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Fungsi untuk menangani pencarian
+  const handleSearch = (
+    e:
+      | React.KeyboardEvent<HTMLInputElement>
+      | React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    // Mengecek apakah event berasal dari tombol keyboard Enter atau klik mouse
+    if ((e as React.KeyboardEvent).key === "Enter" || e.type === "click") {
+      if (searchTerm.trim() !== "") {
+        alert(`Mencari artikel dengan kata kunci: ${searchTerm}`);
+      }
+    }
+  };
+
   return (
-    <div className="space-y-8 ">
-      {/* Search */}
+    <div className="space-y-8">
+      {/* Search Bar Berfungsi */}
       <div className="relative flex items-center">
         <input
           type="text"
-          placeholder="Cari Artikel..."
-          className="w-full border-2 border-[#E8E2D6] rounded-2xl px-5 py-4 text-[18px] md:text-[20px] text-[#2D2D2D] focus:outline-none focus:ring focus:ring-[#E8E2D6]"
+          value={searchTerm}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setSearchTerm(e.target.value)
+          }
+          onKeyDown={handleSearch}
+          placeholder="Cari Pendidikan, Prestasi..." // Placeholder lebih informatif
+          className="w-full border-2 border-[#E8E2D6] rounded-2xl px-5 py-4 text-[18px] md:text-[20px] text-[#2D2D2D] focus:outline-none focus:ring focus:ring-[#C4714A]/30 transition-all"
         />
-        <span className="absolute right-5 top-4 text-gray-400 text-[20px]">
+        <button
+          onClick={handleSearch}
+          className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#C4714A] transition-colors cursor-pointer text-[20px]"
+        >
           🔍
-        </span>
+        </button>
       </div>
 
       {/* Categories */}
@@ -52,14 +83,15 @@ export default function NewsSidebar() {
         </div>
       </div>
 
-      {/* Popular News */}
+      {/* Popular News - Clickable to Preview */}
       <div className="bg-none p-8 rounded-2xl border-2 border-[#E8E2D6]">
         <h4 className="font-semibold text-[#2D2D2D] mb-6 text-[20px]">
           Artikel Populer
         </h4>
         <div className="space-y-6">
           {popularNews.map((news, index) => (
-            <div
+            <Link
+              href={`/news/preview/${news.slug}`} // Navigasi ke page preview
               key={index}
               className="flex gap-4 group cursor-pointer items-center"
             >
@@ -76,7 +108,7 @@ export default function NewsSidebar() {
                   {news.title}
                 </h5>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -87,9 +119,12 @@ export default function NewsSidebar() {
           Tergerak oleh cerita ini? Mari bantu kami menghadirkan lebih banyak
           senyum.
         </p>
-        <button className="w-full bg-[#C4714A] text-white py-3 rounded-2xl font-bold text-[18px] hover:bg-[#b06d48] transition-colors tracking-wide">
+        <Link
+          href="/donation"
+          className="text-[18px] md:text-[20px] bg-[#C4714A] text-white px-8 py-4 rounded-2xl font-semibold hover:bg-[#a66a48] transition-all transform hover:scale-105 cursor-pointer shadow-lg"
+        >
           Donasi Sekarang
-        </button>
+        </Link>
       </div>
     </div>
   );

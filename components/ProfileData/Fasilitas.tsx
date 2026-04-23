@@ -33,7 +33,7 @@ const dataFasilitas = [
 
 export default function Fasilitas() {
   return (
-    <section className="container mx-auto px-6 py-20">
+    <section id="fasilitas" className="container mx-auto px-6 py-20">
       <p className="text-[20px] md:text-[24px] font-semibold text-[#4A6B55] uppercase tracking-widest mb-2">
         Fasilitas
       </p>

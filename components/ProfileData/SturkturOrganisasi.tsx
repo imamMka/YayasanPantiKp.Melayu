@@ -23,7 +23,7 @@ const staffList: Staff[] = [
 
 const StrukturOrganisasi: React.FC = () => {
   return (
-    <section className="container mx-auto px-6 py-20">
+    <section id="struktur-organisasi" className="container mx-auto px-6 py-20">
       <div className="mb-10">
         <p className="text-[20px] md:text-[24px] text-[#4A6B55] font-semibold uppercase tracking-[0.2em] mb-2">
           Struktur Pengurus

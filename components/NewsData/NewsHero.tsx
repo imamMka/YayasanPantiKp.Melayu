@@ -1,6 +1,6 @@
 export default function NewsHero() {
   return (
-    <section className="container mx-auto px-6 pt-16 pb-8">
+    <section className="container mx-auto px-6 pt-16 pb-16 border-b-2 border-[#E8E2D6]">
       <p className="text-[#4A6B55] text-[20px] md:text-[24px] font-semibold tracking-[0.2em] uppercase mb-4">
         Berita & Kegiatan
       </p>

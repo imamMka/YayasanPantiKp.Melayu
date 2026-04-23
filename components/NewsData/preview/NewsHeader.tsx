@@ -6,7 +6,7 @@ export default function NewsHeader({ slug }: NewsHeaderProps) {
   return (
     <section>
       {/* Image Banner */}
-      <div className="aspect-video w-full bg-gray-200 relative overflow-hidden rounded-b-3xl">
+      <div className="aspect-video w-full bg-gray-200 relative overflow-hidden rounded-b-3xl ">
         <img
           src="/panti.jpg"
           alt="Banner Berita"

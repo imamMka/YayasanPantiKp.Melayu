@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Hero: React.FC = () => {
   return (
@@ -23,12 +24,18 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row w-full gap-4">
-            <button className="text-[18px] md:text-[20px] bg-[#C4714A] text-white px-8 py-4 rounded-2xl font-semibold hover:bg-[#a66a48] transition-all transform hover:scale-105 cursor-pointer shadow-lg">
+            <Link
+              href="/donation"
+              className="text-[18px] md:text-[20px] bg-[#C4714A] text-white px-8 py-4 rounded-2xl font-semibold hover:bg-[#a66a48] transition-all transform hover:scale-105 cursor-pointer shadow-lg"
+            >
               Donasi Sekarang
-            </button>
-            <button className="text-[18px] md:text-[20px] bg-[#C4714A]  text-white px-8 py-4 rounded-2xl font-semibold  hover:bg-[#a66a48] transition-all cursor-pointer">
+            </Link>
+            <Link
+              href="/profile"
+              className="text-[18px] md:text-[20px] bg-[#C4714A]  text-white px-8 py-4 rounded-2xl font-semibold  hover:bg-[#a66a48] transition-all cursor-pointer"
+            >
               Profil Kami
-            </button>
+            </Link>
           </div>
         </div>
 

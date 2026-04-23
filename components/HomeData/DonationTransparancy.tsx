@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 interface ProgressBar {
   label: string;
@@ -53,9 +54,12 @@ const DonationTransparancy: React.FC = () => {
         </div>
 
         {/* Button dengan padding yang pas */}
-        <button className="bg-[#C58058] text-white px-10 py-3.5 rounded-2xl cursor-pointer font-bold text-[20px] md:text-[24px] shadow-lg shadow-orange-900/10 hover:bg-[#b06d48] transition-all transform hover:-translate-y-0.5">
+        <Link
+          href="/donation"
+          className="bg-[#C58058] text-white px-10 py-3.5 rounded-2xl cursor-pointer font-bold text-[20px] md:text-[24px] shadow-lg shadow-orange-900/10 hover:bg-[#b06d48] transition-all transform hover:-translate-y-0.5"
+        >
           Donasi Sekarang
-        </button>
+        </Link>
       </div>
     </section>
   );

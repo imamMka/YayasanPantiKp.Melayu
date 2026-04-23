@@ -32,7 +32,7 @@ const News: React.FC = () => {
           Berita & Kegiatan Terbaru
         </h2>
         <a
-          href="#"
+          href="/news"
           className="text-[#C4714A] text-[18px] md:text-[22px] font-semibold hover:underline mt-4 md:mt-0"
         >
           Selengkapnya &rarr;

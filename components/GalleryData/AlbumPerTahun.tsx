@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const albums = [
   {
     year: "2026",
@@ -29,9 +31,14 @@ export default function AlbumPerTahun() {
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {albums.map((album, i) => (
-          <div key={i} className="group cursor-pointer">
+          /* Membungkus card dengan Link */
+          <Link
+            key={i}
+            href={`/gallery/${album.year}`} // Arahkan ke route dinamis berdasarkan tahun
+            className="group block cursor-pointer"
+          >
             <div className="bg-white p-3 rounded-2xl border border-gray-100 shadow-sm group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300">
-              {/* Grid Mini Preview dengan Gambar Asli */}
+              {/* Grid Mini Preview */}
               <div className="grid grid-cols-2 gap-1.5 mb-4 overflow-hidden rounded-xl">
                 {album.previews.map((img, idx) => (
                   <div
@@ -49,7 +56,7 @@ export default function AlbumPerTahun() {
 
               {/* Info Album */}
               <div className="px-1 pb-1">
-                <h4 className="font-bold text-[#2D2D2D] text-[20px] md:text-[24px] mb-1">
+                <h4 className="font-bold text-[#2D2D2D] text-[20px] md:text-[24px] mb-1 group-hover:text-[#C4714A] transition-colors">
                   {album.year}
                 </h4>
                 <p className="text-[16px] md:text-[18px] text-[#6E6E6E] font-medium">
@@ -57,7 +64,7 @@ export default function AlbumPerTahun() {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

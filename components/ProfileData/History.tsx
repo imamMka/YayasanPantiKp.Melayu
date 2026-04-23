@@ -1,6 +1,9 @@
 export default function History() {
   return (
-    <section className="container mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+    <section
+      id="history"
+      className="container mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-12 gap-12 items-start"
+    >
       <div className="md:col-span-7">
         <p className="text-[20px] md:text-[24px] font-semibold text-[#4A6B55] uppercase tracking-widest mb-3">
           Profil Yayasan

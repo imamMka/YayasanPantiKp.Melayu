@@ -11,7 +11,24 @@ export default function DonationPage() {
     setTimeout(() => setCopiedText(null), 2000);
   };
 
-  const waNumber = "6281234567890"; // Ganti nomor WA aslimu
+  const handleDownload = async () => {
+    try {
+      const response = await fetch("/qris.jpg"); // Ganti dengan path yang benar jika diperlukan
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "qris.jpg";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error("Gagal mendownload gambar:", err);
+    }
+  };
+
+  const waNumber = "6281219118993"; // Ganti nomor WA aslimu
   const waMessage = encodeURIComponent("Alhamdulillah saya sudah berdonasi");
 
   return (
@@ -34,12 +51,13 @@ export default function DonationPage() {
                 QRIS
               </h3>
               <div className="w-full max-w-[300px] aspect-square bg-[#F3E5D8] rounded-3xl flex items-center justify-center border-2 border-dashed border-[#C58058]/30 relative overflow-hidden group">
-                <span className="text-[#2d2d2d] font-semibold opacity-40 italic">
-                  QRIS PREVIEW
-                </span>
+                <img src="/qris.jpg" alt="qris-code-dummy" />
                 {/* Nanti ganti pakai <img src="/path-qris.jpg" /> */}
               </div>
-              <button className="mt-6 px-10 py-3 bg-[#C4714A] text-white rounded-xl font-bold text-sm hover:bg-[#b06d48] transition-all active:scale-95 shadow-lg shadow-orange-900/10">
+              <button
+                onClick={handleDownload}
+                className="cursor-pointer mt-6 px-10 py-3 bg-[#C4714A] text-white rounded-xl font-bold text-sm hover:bg-[#b06d48] transition-all active:scale-95 shadow-lg shadow-orange-900/10"
+              >
                 Unduh
               </button>
             </div>
@@ -63,7 +81,7 @@ export default function DonationPage() {
                   </p>
                   <button
                     onClick={() => handleCopy("123456789012", "bsi")}
-                    className="absolute right-4 bottom-4 bg-[#10B981] text-white px-5 py-2 rounded-lg text-[20px] md:text-[24px] shadow-md active:scale-90 transition-all"
+                    className="cursor-pointer absolute right-4 bottom-4 bg-[#10B981] text-white px-5 py-2 rounded-lg text-[20px] md:text-[24px] shadow-md active:scale-90 transition-all"
                   >
                     {copiedText === "bsi" ? "Tersalin!" : "Salin"}
                   </button>
@@ -89,26 +107,29 @@ export default function DonationPage() {
                     </p>
                     <button
                       onClick={() => handleCopy("081234567890", "gopay")}
-                      className="absolute right-4 bottom-4 bg-[#06B6D4] text-white px-5 py-2 rounded-lg text-[20px] md:text-[24px] shadow-md active:scale-90 transition-all"
+                      className="cursor-pointer absolute right-4 bottom-4 bg-[#06B6D4] text-white px-5 py-2 rounded-lg text-[20px] md:text-[24px] shadow-md active:scale-90 transition-all"
                     >
                       {copiedText === "gopay" ? "Tersalin!" : "Salin"}
                     </button>
                   </div>
 
                   {/* OVO */}
-                  <div className="bg-[#EDE9FE] p-6 rounded-2xl relative border border-purple-200">
-                    <p className="text-[#6e6e6e] font-semibold text-[20px] md:text-[24px] mb-1">
-                      OVO
-                    </p>
-                    <p className="text-[#6e6e6e] text-[20px] md:text-[24px] opacity-70 mb-2">
-                      a/n Panti Asuhan Kp.Melayu
-                    </p>
-                    <p className="text-[#2d2d2d] font-semibold text-[20px] md:text-[24px] tracking-wider font-mono">
-                      081234567890
-                    </p>
+                  <div className="flex flex-col bg-[#EDE9FE] p-6 rounded-2xl relative border border-purple-200">
+                    <div className="flex flex-col items-start justify-between">
+                      <p className="text-[#6e6e6e] font-semibold text-[20px] md:text-[24px] mb-1">
+                        OVO
+                      </p>
+                      <p className="text-[#6e6e6e] text-[20px] md:text-[24px] opacity-70 mb-2">
+                        a/n Panti Asuhan Kp.Melayu
+                      </p>
+                      <p className="text-[#2d2d2d] font-semibold text-[20px] md:text-[24px] tracking-wider font-mono">
+                        081234567890
+                      </p>
+                    </div>
+
                     <button
                       onClick={() => handleCopy("081234567890", "ovo")}
-                      className="absolute right-4 bottom-4 bg-[#7C3AED] text-white px-5 py-2 rounded-lg text-[20px] md:text-[24px] shadow-md active:scale-90 transition-all"
+                      className="cursor-pointer absolute right-4 bottom-4 bg-[#7C3AED] text-white px-5 py-2 rounded-lg text-[20px] md:text-[24px] shadow-md active:scale-90 transition-all"
                     >
                       {copiedText === "ovo" ? "Tersalin!" : "Salin"}
                     </button>

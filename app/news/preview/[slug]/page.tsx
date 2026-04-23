@@ -3,6 +3,7 @@ import Link from "next/link";
 import NewsHeader from "@/components/NewsData/preview/NewsHeader";
 import NewsContent from "@/components/NewsData/preview/NewsContent";
 import RelatedArticles from "@/components/NewsData/preview/RelatedArticles";
+import { ALL_ARTICLES } from "@/components/NewsData/NewsData";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -29,7 +30,7 @@ export default async function PreviewPage({ params }: PageProps) {
           <NewsContent slug={slug} />
         </div>
 
-        <RelatedArticles />
+        <RelatedArticles articles={ALL_ARTICLES.slice(0, 2)} />
       </div>
     </main>
   );
