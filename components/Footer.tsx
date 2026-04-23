@@ -16,11 +16,11 @@ export const Socials: React.FC = () => {
   return (
     <section className="bg-[#262626] border-t border-white/5 py-4 px-6 m-10 rounded-lg">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-white text-[20px] md:text-[24px] font-medium tracking-wide">
+        <p className="text-white text-[20px] md:text-[24px] font-medium tracking-wide w-full md:w-auto text-center md:text-left">
           Ikuti perkembangan kami
         </p>
 
-        <div className="flex gap-3">
+        <div className="flex flex-col w-full md:flex-row items-center justify-end gap-3">
           {platforms.map((soc) => (
             <a
               key={soc.name}
@@ -29,7 +29,7 @@ export const Socials: React.FC = () => {
               rel="noopener noreferrer"
               className="px-6 py-1.5 rounded-xl text-[20px] md:text-[24px] tracking-widest
                          bg-[#C4714A] text-white
-                         hover:bg-[#5E4134] hover:text-white transition-all duration-300 capitalize"
+                         hover:bg-[#5E4134] hover:text-white transition-all duration-300 capitalize w-full md:w-auto text-center"
             >
               {soc.name}
             </a>

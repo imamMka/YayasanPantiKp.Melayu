@@ -28,29 +28,42 @@ const News: React.FC = () => {
   return (
     <section className="container mx-auto px-6 py-16">
       <div className="flex md:flex-row flex-col justify-between md:items-center items-start mb-8">
-        <h2 className="text-[48px] md:text-[64px] font-semibold text-[#2D2D2D]">
+        <h2 className="text-[40px] md:text-[56px] font-semibold text-[#2D2D2D] leading-tight">
           Berita & Kegiatan Terbaru
         </h2>
         <a
           href="#"
-          className="text-[#C4714A] text-[20px] md:text-[24px] font-semibold"
+          className="text-[#C4714A] text-[18px] md:text-[22px] font-semibold hover:underline mt-4 md:mt-0"
         >
           Selengkapnya &rarr;
         </a>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {articles.map((item, idx) => (
           <div
             key={idx}
-            className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100"
+            className="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-shadow duration-300"
           >
-            <div className="h-48 bg-gray-200"></div>
-            <div className="p-5">
-              <span className="text-[10px] bg-green-100 text-green-700 px-2 py-1 rounded uppercase font-bold">
+            {/* Bagian Gambar yang diperbarui */}
+            <div className="h-56 w-full overflow-hidden">
+              <img
+                src="/panti-3.jpg"
+                alt={item.title}
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+
+            <div className="p-6">
+              <span className="text-[12px] bg-[#E8F3ED] text-[#4A6B55] px-3 py-1 rounded-full uppercase font-bold tracking-wider">
                 {item.tag}
               </span>
-              <h3 className="font-bold mt-3 mb-2">{item.title}</h3>
-              <p className="text-xs text-gray-400">{item.date}</p>
+              <h3 className="text-[20px] font-bold mt-4 mb-2 text-[#2D2D2D] leading-snug min-h-[56px]">
+                {item.title}
+              </h3>
+              <p className="text-sm text-gray-400 flex items-center gap-2">
+                <span className="w-4 h-[1px] bg-gray-300"></span> {item.date}
+              </p>
             </div>
           </div>
         ))}

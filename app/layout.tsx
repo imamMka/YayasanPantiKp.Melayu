@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} h-full antialiased oveerflow-x-hidden`}
+      className={`${montserrat.variable} h-full antialiased overflow-x-hidden`}
     >
       <body className="min-h-full flex flex-col">
         <Navbar />

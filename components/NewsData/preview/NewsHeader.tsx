@@ -6,9 +6,12 @@ export default function NewsHeader({ slug }: NewsHeaderProps) {
   return (
     <section>
       {/* Image Banner */}
-      <div className="aspect-video w-full bg-gray-200 relative">
-        {/* Replace with <Image /> */}
-        <div className="w-full h-full bg-slate-300" />
+      <div className="aspect-video w-full bg-gray-200 relative overflow-hidden rounded-b-3xl">
+        <img
+          src="/panti.jpg"
+          alt="Banner Berita"
+          className="w-full h-full object-cover"
+        />
       </div>
 
       <div className="p-8 md:p-12 pb-0">
@@ -26,7 +29,7 @@ export default function NewsHeader({ slug }: NewsHeaderProps) {
           <span className="text-gray-600">Pendidikan</span>
         </nav>
 
-        <h1 className="text-[24px] md:text-[32px] font-bold text-[#2D3E33] leading-tight mb-8">
+        <h1 className="text-[24px] md:text-[32px] lg:text-[48px] font-bold text-[#2D3E33] leading-tight mb-8">
           Dito, dari panti asuhan ke podium olimpiade — sebuah perjalanan yang
           mengubah segalanya
         </h1>

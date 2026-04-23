@@ -2,32 +2,32 @@ const dataFasilitas = [
   {
     title: "Asrama & Kamar Tidur",
     desc: "Kamar yang bersih dan nyaman dengan sirkulasi udara baik.",
-    icon: "🏠",
+    img: "/asrama.jpg",
   },
   {
     title: "Dapur & Ruang Makan",
     desc: "Dapur bersih dengan peralatan memasak standar kesehatan.",
-    icon: "🍴",
+    img: "/dapur.jpg",
   },
   {
     title: "Ruang Belajar",
     desc: "Fasilitas belajar yang tenang, nyaman, dan edukatif.",
-    icon: "📖",
+    img: "/kelas.jpg",
   },
   {
     title: "Area Bermain & Olahraga",
     desc: "Halaman luas untuk aktivitas fisik dan hobi anak-anak.",
-    icon: "🏀",
+    img: "/bermain.jpg",
   },
   {
     title: "Lab Komputer",
     desc: "Akses teknologi untuk menunjang edukasi digital anak.",
-    icon: "💻",
+    img: "/lab.jpg",
   },
   {
     title: "Ruang Ibadah",
     desc: "Musholla dalam area panti untuk pembinaan spiritual.",
-    icon: "🕌",
+    img: "/musholla.jpg",
   },
 ];
 
@@ -44,20 +44,29 @@ export default function Fasilitas() {
         Kami terus berupaya menyediakan fasilitas yang aman, bersih, dan
         mendukung perkembangan aspek kognitif anak-anak.
       </p>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {dataFasilitas.map((item, i) => (
           <div
             key={i}
-            className="flex gap-6 p-8 bg-white border border-gray-100 rounded-2xl"
+            /* Menambahkan h-48 atau h-52 untuk menyamakan tinggi semua kartu */
+            className="flex flex-row overflow-hidden bg-white border border-gray-100 rounded-3xl shadow-sm hover:shadow-md transition-shadow h-48 md:h-52"
           >
-            <div className="text-3xl p-4 bg-orange-50 rounded-xl h-fit">
-              {item.icon}
+            {/* Bagian Gambar: h-full akan mengikuti tinggi kartu (h-48/52) */}
+            <div className="flex-none w-32 md:w-56 h-full bg-gray-100">
+              <img
+                src={item.img}
+                alt={item.title}
+                className="w-full h-full object-cover"
+              />
             </div>
-            <div>
-              <h4 className="font-semibold text-[20px] md:text-[24px] text-[#6E6E6E] mb-2">
+
+            {/* Bagian Teks */}
+            <div className="p-6 flex flex-col justify-center overflow-hidden">
+              <h4 className="font-bold text-[18px] md:text-[22px] text-[#2D2D2D] mb-1 truncate">
                 {item.title}
               </h4>
-              <p className="text-[20px] md:text-[24px] text-[#6E6E6E] leading-relaxed">
+              <p className="text-[14px] md:text-[16px] text-[#6E6E6E] leading-snug line-clamp-3">
                 {item.desc}
               </p>
             </div>
