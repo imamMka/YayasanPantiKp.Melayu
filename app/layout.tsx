@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "../components/Navbar";
 import Home from "./page";
 import { Footer, Socials } from "../components/Footer";
+import FloatingWhatsApp from "../components/FloatingWa";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -29,6 +30,9 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+
+        {/* Floating WhatsApp Button */}
+        <FloatingWhatsApp />
       </body>
     </html>
   );
