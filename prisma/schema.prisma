@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model News {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  quote     String?
+  imageUrl  String   // public Cloudflare R2 URL
+  imageKey  String?  // optional R2 object key / path
+  createdAt DateTime @default(now())
+}
+
+model Gallery {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  imageUrl    String   // public Cloudflare R2 URL
+  imageKey    String?  // optional R2 object key / path
+  createdAt   DateTime @default(now())
+}

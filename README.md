@@ -1,5 +1,91 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Technical Summary
+
+- User Management
+  - Menyimpan profil pengguna dasar dengan identifier unik.
+  - Menyimpan data keamanan untuk autentikasi dan akses aplikasi.
+  - Profil dirancang untuk mendukung informasi identitas dan kontrol akses.
+
+- Content/Product Logic
+  - Konten utama diorganisir dalam entitas berita dan galeri.
+  - Setiap konten memiliki judul, deskripsi atau isi, dan atribut metadata terkait.
+  - Gambar dipisahkan sebagai file terpisah di object storage Cloudflare R2, sedangkan teks dan metadata konten disimpan di database Supabase.
+
+- Audit Trails
+  - Sistem mencatat waktu pembuatan setiap catatan.
+  - Waktu pembuatan digunakan untuk melacak kapan konten ditambahkan ke sistem.
+  - Struktur data mendukung pelacakan rentang waktu untuk manajemen konten yang lebih baik.
+
+## Project Progress
+
+- Struktur utama aplikasi sudah terbentuk dengan halaman publik untuk berita, galeri, profil, dan donasi.
+- Admin flow pembuatan konten sudah tersedia untuk entri berita dan foto galeri.
+- Penyimpanan gambar telah diintegrasikan dengan Cloudflare R2, sementara teks dan metadata disimpan di Supabase melalui Prisma.
+- Prisma telah dikonfigurasikan sebagai lapisan data utama untuk akses teks, metadata, dan relasi konten.
+
+## Frontend Progress
+
+- Tampilan publik dan form admin sudah dibangun menggunakan Next.js dan komponen client-side.
+- Halaman berita dan galeri sudah bisa menampilkan data konten dasar.
+- Upload gambar melalui `app/api/upload` terhubung ke R2 untuk menyimpan file.
+- Beberapa bagian UI masih menggunakan data statis, terutama preview dan navigation.
+- Navigasi user-flow dasar tersedia, tetapi belum lengkap untuk semua halaman admin.
+
+## Backend Progress
+
+- Lapisan data backend menggunakan Prisma untuk Supabase sebagai database teks dan metadata.
+- Integrasi Cloudflare R2 telah disiapkan dengan konfigurasi S3 client pada `lib/s3.ts`.
+- Endpoint upload bekerja untuk menyimpan file ke bucket R2 dan mengembalikan URL publik.
+- Model backend saat ini fokus pada `News` dan `Gallery`, tetapi manajemen pengguna belum terimplementasi penuh.
+- Audit trail backend saat ini hanya mencatat waktu pembuatan, belum mendukung update timestamp secara lengkap.
+
+## Current Issues
+
+- User management masih bersifat kerangka; model pengguna dan otentikasi penuh belum lengkap.
+- Audit trail hanya menangkap waktu pembuatan saat ini, dan belum memiliki mekanisme pembaruan lengkap.
+- Beberapa konten preview/nav masih mengandalkan data hardcoded atau struktur statis.
+- Integrasi upload R2 sudah ada, tetapi penyimpanan kunci file dan penggunaan URL publik perlu pengujian lanjutan.
+- Lingkungan deployment bergantung pada variabel Cloudflare R2 dan Supabase yang harus disiapkan dengan benar.
+
+## Future Roadmap
+
+- Keamanan CMS dashboard dengan login dan proteksi akses admin.
+- Sistem navigasi lengkap agar pengguna dapat mengakses semua halaman utama dan admin.
+- Penyelesaian user management untuk profil, autentikasi, dan kontrol akses.
+- Penyempurnaan audit trail untuk capture waktu pembaruan, bukan hanya pembuatan.
+- Penambahan testing dan dokumentasi deployment untuk Supabase + Cloudflare R2.
+
+## Installation & Additional Structure
+
+- Setup environment variables untuk `DATABASE_URL`, `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, dan `R2_PUBLIC_URL`.
+- Jalankan `npm install` jika package belum terpasang.
+- Folder tambahan yang dipakai saat ini termasuk `app/admin`, `app/api/upload`, `lib/actions.ts`, dan `lib/prisma.ts`.
+- Path utama untuk page dan integrasi:
+  - `/news`
+  - `/gallery`
+  - `/profile`
+  - `/donation`
+  - `/admin/news/create`
+  - `/admin/gallery/create`
+  - `/api/upload`
+
+## Current Completion
+
+- Proyek saat ini berada di sekitar 55% selesai.
+- Struktur publik dan alur pembuatan konten sudah berjalan, namun fitur keamanan CMS, navigasi penuh, dan audit trail lengkap masih dalam pengembangan.
+
+## Next Work
+
+- Lengkapi keamanan CMS dashboard dengan login, otentikasi, dan proteksi akses admin.
+- Selesaikan user management untuk profil pengguna, autentikasi, dan kontrol hak akses.
+- Bangun sistem navigasi penuh yang menghubungkan halaman publik dan halaman admin secara konsisten.
+- Perkuat audit trail dengan timestamp pembuatan dan pembaruan data, dan catat perubahan konten.
+- Uji end-to-end upload Cloudflare R2, simpan metadata `imageKey` dan gunakan URL publik secara andal.
+- Ganti konten preview hardcoded dengan data dinamis dari database Supabase.
+- Verifikasi integrasi Prisma-Supabase untuk query berita, galeri, dan model metadata.
+- Perbaiki dokumentasi instalasi dan environment variable untuk deployment yang stabil.
+
 ## Getting Started
 
 First, run the development server:
