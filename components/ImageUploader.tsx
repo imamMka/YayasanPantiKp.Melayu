@@ -1,11 +1,10 @@
 "use client";
-import { div, p } from "framer-motion/client";
 import { useState } from "react";
 
 export default function ImageUploader({
   onUploadSuccess,
 }: {
-  onUploadSuccess: (url: string) => void;
+  onUploadSuccess: (upload: { url: string; key: string }) => void;
 }) {
   const [loading, setLoading] = useState(false);
 
@@ -22,13 +21,19 @@ export default function ImageUploader({
         method: "POST",
         body: formData,
       });
+
       const data = await res.json();
-      onUploadSuccess(data.url); //Kirim URL gambar yang diupload ke form uatama
+      if (!res.ok || !data?.url || !data?.key) {
+        throw new Error(data?.message || "Upload gagal");
+      }
+
+      onUploadSuccess({ url: data.url, key: data.key });
     } catch (err) {
-      alert("Gagal mengupload gambar");
+      alert(
+        `Gagal mengupload gambar: ${err instanceof Error ? err.message : "Kesalahan server"}`,
+      );
     } finally {
       setLoading(false);
-      message: "Gambar berhasil diupload!";
     }
   };
 

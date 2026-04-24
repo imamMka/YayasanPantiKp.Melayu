@@ -1,33 +1,108 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+
+interface GalleryItem {
+  id: number | string;
+  title?: string;
+  imageUrl: string;
+}
+
+interface MasonryGalleryProps {
+  galleryItems?: GalleryItem[];
+}
 
 const INITIAL_IMAGES = [
-  { id: "kegiatan-belajar-1", height: "h-96", src: "/panti.jpg" },
-  { id: "bermain-bola", height: "h-64", src: "/bermain.jpg" },
-  { id: "asrama-putra", height: "h-80", src: "/asrama.jpg" },
-  { id: "kunjungan-donatur", height: "h-96", src: "/panti-3.jpg" },
-  { id: "makan-bersama", height: "h-64", src: "/panti-2.jpg" },
-  { id: "belajar-komputer", height: "h-80", src: "/panti-4.jpg" },
-  { id: "kegiatan-seni", height: "h-96", src: "/asrama.jpg" },
-  { id: "bermain-di-taman", height: "h-64", src: "/bermain.jpg" },
-  { id: "bermain-musik", height: "h-80", src: "/panti-2.jpg" },
-  { id: "acara-keluarga", height: "h-96", src: "/panti-4.jpg" },
-  { id: "kegiatan-outdoor", height: "h-64", src: "/panti.jpg" },
-  { id: "kegiatan-sosial", height: "h-80", src: "/panti-3.jpg" },
+  {
+    id: "kegiatan-belajar-1",
+    height: "h-96",
+    src: "/panti.jpg",
+    alt: "Kegiatan Belajar",
+  },
+  {
+    id: "bermain-bola",
+    height: "h-64",
+    src: "/bermain.jpg",
+    alt: "Bermain Bola",
+  },
+  {
+    id: "asrama-putra",
+    height: "h-80",
+    src: "/asrama.jpg",
+    alt: "Asrama Putra",
+  },
+  {
+    id: "kunjungan-donatur",
+    height: "h-96",
+    src: "/panti-3.jpg",
+    alt: "Kunjungan Donatur",
+  },
+  {
+    id: "makan-bersama",
+    height: "h-64",
+    src: "/panti-2.jpg",
+    alt: "Makan Bersama",
+  },
+  {
+    id: "belajar-komputer",
+    height: "h-80",
+    src: "/panti-4.jpg",
+    alt: "Belajar Komputer",
+  },
+  {
+    id: "kegiatan-seni",
+    height: "h-96",
+    src: "/asrama.jpg",
+    alt: "Kegiatan Seni",
+  },
+  {
+    id: "bermain-di-taman",
+    height: "h-64",
+    src: "/bermain.jpg",
+    alt: "Bermain di Taman",
+  },
+  {
+    id: "bermain-musik",
+    height: "h-80",
+    src: "/panti-2.jpg",
+    alt: "Bermain Musik",
+  },
+  {
+    id: "acara-keluarga",
+    height: "h-96",
+    src: "/panti-4.jpg",
+    alt: "Acara Keluarga",
+  },
+  {
+    id: "kegiatan-outdoor",
+    height: "h-64",
+    src: "/panti.jpg",
+    alt: "Kegiatan Outdoor",
+  },
+  {
+    id: "kegiatan-sosial",
+    height: "h-80",
+    src: "/panti-3.jpg",
+    alt: "Kegiatan Sosial",
+  },
 ];
 
-export default function MasonryGallery() {
+export default function MasonryGallery({ galleryItems }: MasonryGalleryProps) {
   const [viewMode, setViewMode] = useState("grid");
-  // State untuk menentukan berapa kali data diulang
   const [displayCount, setDisplayCount] = useState(1);
   const maxRepeats = 3;
 
-  // Membuat array baru berdasarkan jumlah pengulangan
-  // Kita tambahkan index pada ID agar key React tetap unik
+  const DISPLAY_IMAGES = galleryItems?.length
+    ? galleryItems.map((item) => ({
+        id: String(item.id),
+        src: item.imageUrl,
+        alt: item.title || `Foto ${item.id}`,
+        height: "h-80",
+      }))
+    : INITIAL_IMAGES;
+
   const currentImages = Array.from({ length: displayCount }).flatMap((_, i) =>
-    INITIAL_IMAGES.map((img) => ({
+    DISPLAY_IMAGES.map((img) => ({
       ...img,
       uniqueId: `${img.id}-${i}`,
     })),
@@ -37,16 +112,13 @@ export default function MasonryGallery() {
     if (displayCount < maxRepeats) {
       setDisplayCount((prev) => prev + 1);
     } else {
-      // Reset kembali ke awal
       setDisplayCount(1);
-      // Optional: Scroll kembali ke atas galeri saat "Lihat Lebih Sedikit"
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   return (
     <section className="py-10">
-      {/* Header Section */}
       <div className="flex flex-col justify-start items-start md:flex-row md:justify-between md:items-end mb-12 gap-6">
         <div>
           <p className="text-[#4A6B55] font-bold uppercase tracking-widest mb-2">
@@ -57,7 +129,6 @@ export default function MasonryGallery() {
           </h2>
         </div>
 
-        {/* Toggle Buttons */}
         <div className="flex gap-2 bg-white p-2 rounded-2xl border border-gray-100 shadow-sm">
           <button
             onClick={() => setViewMode("grid")}
@@ -97,7 +168,6 @@ export default function MasonryGallery() {
         </div>
       </div>
 
-      {/* Masonry Container */}
       <div
         className={
           viewMode === "grid"
@@ -107,10 +177,7 @@ export default function MasonryGallery() {
       >
         {currentImages.map((item) => (
           <div key={item.uniqueId} className="break-inside-avoid">
-            <Link
-              href={`/gallery/preview/${item.id}`}
-              className="relative block overflow-hidden rounded-[2rem] group shadow-sm hover:shadow-2xl transition-all duration-500"
-            >
+            <div className="relative block overflow-hidden rounded-[2rem] group shadow-sm hover:shadow-2xl transition-all duration-500">
               <div
                 className={`w-full relative transition-transform duration-700 group-hover:scale-110 ${
                   viewMode === "grid" ? item.height : "h-[450px] md:h-[600px]"
@@ -118,22 +185,21 @@ export default function MasonryGallery() {
               >
                 <img
                   src={item.src}
-                  alt={item.id}
+                  alt={item.alt}
                   className="w-full h-full object-cover"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
                   <p className="text-white font-semibold text-xl capitalize translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    {item.id.replace(/-/g, " ")}
+                    {item.alt}
                   </p>
                 </div>
               </div>
-            </Link>
+            </div>
           </div>
         ))}
       </div>
 
-      {/* Dynamic Load More / Less Button */}
       <div className="flex justify-center mt-20">
         <button
           onClick={handleLoadMore}
