@@ -30,39 +30,26 @@ Aplikasi ini adalah website informasi untuk `PantiAsuhanKpMelayu` dengan halaman
 
 ## Progress Saat Ini
 
-- Frontend: 60% selesai
-  - Struktur halaman publik sudah ada
-  - Form admin berita dan galeri sudah berjalan
-  - Beberapa tampilan masih mengandalkan data statis dan preview dummy
-- Backend: 50% selesai
-  - Create flow berita dan galeri bekerja
-  - Upload gambar ke R2 sudah tersedia
-  - Belum ada autentikasi, update/delete, atau manajemen pengguna
-- Total proyek: 55% selesai
+- Frontend: 80% selesai
+  - Struktur halaman publik sudah berjalan dinamis (berita & galeri terhubung database).
+  - Halaman detail berita dan galeri dinamis (`news/preview/[slug]`, `gallery/preview/[id]`) sudah tersedia.
+  - Form admin berita dan galeri sudah berjalan dengan perbaikan UI (seperti hover Tailwind).
+- Backend: 75% selesai
+  - Autentikasi / proteksi halaman admin sudah ada menggunakan middleware (`/admin/*`).
+  - Alur Create berita dan galeri sudah stabil, dan upload ke R2 sudah memvalidasi respon serta menyimpan `imageKey`.
+  - Belum ada fitur update/delete untuk konten berita dan galeri.
+- Total proyek: 75% selesai
 
 ## Masalah / Error yang Perlu Diperbaiki
 
-- `app/gallery/page.tsx` belum mengambil data galeri dari database; masih statis.
-- `components/MasonryGallery.tsx` menggunakan gambar dummy lokal dan tidak sinkron dengan model `Gallery`.
-- `lib/actions.ts` belum menyimpan `imageKey` meski skema Prisma mendukungnya.
-- `components/ImageUploader.tsx`:
-  - tidak memeriksa `res.ok`
-  - ada baris `message: "Gambar berhasil diupload!";` yang salah tempat
-- `app/admin/gallery/create/page.tsx` memiliki kelas Tailwind salah tulis `hover:blue-700`.
-- `next.config.ts` hanya menyetujui satu host R2, yang bisa gagal jika `R2_PUBLIC_URL` berbeda.
-- Belum ada proteksi admin, sehingga semua route admin terbuka.
-- Belum ada halaman detail berita/gambar dinamis untuk `news/[id]` dan `gallery/preview/[id]`.
+- `next.config.ts` hanya menyetujui satu host R2 statis, yang bisa gagal jika domain R2 yang digunakan berubah (perlu disesuaikan dengan environment `R2_PUBLIC_URL`).
 
 ## Rencana Kerja Berikutnya
 
-1. Tambah proteksi admin / autentikasi untuk `app/admin/*`.
-2. Sambungkan halaman galeri ke database `Gallery`.
-3. Perbaiki upload R2:
-   - tambahkan validasi respons
-   - simpan `imageKey` saat membuat record
-4. Sesuaikan `next.config.ts` dengan `R2_PUBLIC_URL` atau domain R2 yang digunakan.
-5. Buat halaman detail dinamis untuk berita dan galeri.
-6. Lengkapi CRUD berita/galeri (edit, delete, tampilkan detail).
+1. Buat UI Dashboard Admin terpusat yang menggabungkan halaman manajemen konten (Berita & Galeri) untuk mempermudah proses Create, Update, dan Delete dalam satu antarmuka.
+2. Lengkapi fitur CRUD (Update dan Delete) untuk berita dan galeri yang terintegrasi dengan Dashboard tersebut.
+3. Dinamisasi host images pada `next.config.ts` menggunakan environment variable.
+4. Tambahkan fitur manajemen pengguna admin atau ganti password (jika dibutuhkan ke depannya).
 
 ## Teknologi
 
