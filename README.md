@@ -11,17 +11,16 @@ Aplikasi ini adalah website informasi untuk `PantiAsuhanKpMelayu` dengan halaman
 - Halaman depan `app/page.tsx` menampilkan beberapa blok konten statis: hero, kebutuhan darurat, berita, galeri, donasi, dan kontak.
 - Halaman berita `app/news/page.tsx` mengambil data dari Prisma dan menampilkan berita dengan `NewsHero`, `NewsGrid`, dan `NewsSidebar`.
 - Halaman galeri `app/gallery/page.tsx` menampilkan `GalleryHero`, `AlbumPerTahun`, dan `MasonryGallery`.
-- Halaman admin:
-  - `app/admin/news/create/page.tsx` untuk menambahkan berita baru.
-  - `app/admin/gallery/create/page.tsx` untuk menambahkan foto galeri.
+- **Admin Dashboard** (`app/admin/dashboard/page.tsx`): Pusat manajemen konten terpadu.
+- **Unified Admin Login** (`app/admin/page.tsx`): Satu pintu masuk untuk admin dengan proteksi username/password.
+- **Full CRUD UI**: Form untuk Create dan Edit berita/galeri dengan pratinjau gambar.
 - Komponen upload `components/ImageUploader.tsx` mengirim file ke endpoint upload.
 
 ### Backend
 
 - `lib/prisma.ts` menginisialisasi Prisma dengan adapter PostgreSQL/Supabase dan logging development.
-- `lib/actions.ts` menyediakan server action:
-  - `createNews(...)`
-  - `createGallery(...)`
+- `lib/actions.ts` menyediakan server action lengkap (Create, Read, Update, Delete) untuk News dan Gallery.
+- **Image Proxy API** (`app/api/images/[...path]/route.ts`): Menangani masalah SSL/HSTS dan blokir ISP dengan menjembatani akses gambar dari server lokal.
 - Endpoint upload `app/api/upload/route.ts`:
   - Menerima file `form-data`
   - Mengunggah ke Cloudflare R2 menggunakan AWS S3 SDK
@@ -30,26 +29,29 @@ Aplikasi ini adalah website informasi untuk `PantiAsuhanKpMelayu` dengan halaman
 
 ## Progress Saat Ini
 
-- Frontend: 80% selesai
-  - Struktur halaman publik sudah berjalan dinamis (berita & galeri terhubung database).
-  - Halaman detail berita dan galeri dinamis (`news/preview/[slug]`, `gallery/preview/[id]`) sudah tersedia.
-  - Form admin berita dan galeri sudah berjalan dengan perbaikan UI (seperti hover Tailwind).
-- Backend: 75% selesai
-  - Autentikasi / proteksi halaman admin sudah ada menggunakan middleware (`/admin/*`).
-  - Alur Create berita dan galeri sudah stabil, dan upload ke R2 sudah memvalidasi respon serta menyimpan `imageKey`.
-  - Belum ada fitur update/delete untuk konten berita dan galeri.
-- Total proyek: 75% selesai
+- Frontend: 95% selesai
+  - Dashboard Admin terpusat sudah berjalan stabil.
+  - Alur Edit dan Update data sudah terintegrasi dengan UI.
+  - Proteksi rute admin sudah diperketat ke satu pintu masuk.
+- Backend: 95% selesai
+  - Fitur CRUD lengkap (Create, Read, Update, Delete) sudah tersedia via Server Actions.
+  - Solusi Image Proxy mengatasi masalah pemuatan gambar di lingkungan development (ISP Indonesia).
+  - Konfigurasi `next.config.ts` sudah dinamis mengikuti `R2_PUBLIC_URL`.
+- Total proyek: 95% selesai
 
-## Masalah / Error yang Perlu Diperbaiki
+## Solusi Masalah Gambar (Development)
 
-- `next.config.ts` hanya menyetujui satu host R2 statis, yang bisa gagal jika domain R2 yang digunakan berubah (perlu disesuaikan dengan environment `R2_PUBLIC_URL`).
+Jika gambar dari Cloudflare R2 tidak muncul atau muncul error "Not Secure", gunakan perintah berikut untuk menjalankan server:
+
+```bash
+export NODE_TLS_REJECT_UNAUTHORIZED=0 && npm run dev
+```
 
 ## Rencana Kerja Berikutnya
 
-1. Buat UI Dashboard Admin terpusat yang menggabungkan halaman manajemen konten (Berita & Galeri) untuk mempermudah proses Create, Update, dan Delete dalam satu antarmuka.
-2. Lengkapi fitur CRUD (Update dan Delete) untuk berita dan galeri yang terintegrasi dengan Dashboard tersebut.
-3. Dinamisasi host images pada `next.config.ts` menggunakan environment variable.
-4. Tambahkan fitur manajemen pengguna admin atau ganti password (jika dibutuhkan ke depannya).
+1. Optimalisasi performa (caching) pada halaman publik.
+2. Tambahkan fitur manajemen pengguna admin tambahan atau ganti password via UI (opsional).
+3. Finalisasi SEO dan Meta Tags untuk setiap halaman berita.
 
 ## Teknologi
 

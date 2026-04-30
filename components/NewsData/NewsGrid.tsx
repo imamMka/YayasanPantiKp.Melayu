@@ -13,6 +13,7 @@ interface NewsItem {
 }
 
 export default function NewsGrid({ data }: { data: any[] }) {
+  console.log("NewsGrid data:", data);
   if (!data || !Array.isArray(data) || data.length === 0) {
     return <p className="text-gray-500 italic">Belum ada berita tersedia.</p>;
   }
@@ -26,7 +27,7 @@ export default function NewsGrid({ data }: { data: any[] }) {
         >
           <div className="relative h-64 w-full">
             <Image
-              src={news.imageUrl}
+              src={news.imageUrl.includes('r2.dev') ? `/api/images/${news.imageUrl.split('r2.dev/').pop()}` : news.imageUrl}
               alt={news.title}
               fill
               className="object-cover"

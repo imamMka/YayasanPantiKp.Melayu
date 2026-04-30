@@ -1,5 +1,6 @@
 export const ADMIN_COOKIE_NAME = "admin_auth_token";
 export const ADMIN_SECRET = process.env.ADMIN_SECRET || "";
+export const ADMIN_USERNAME = process.env.ADMIN_USERNAME || "admin";
 
 export function isAdminTokenValid(token?: string) {
   return Boolean(ADMIN_SECRET && token === ADMIN_SECRET);

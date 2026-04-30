@@ -8,7 +8,7 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const publicAdminPaths = ["/admin/login"];
+  const publicAdminPaths = ["/admin"];
   if (publicAdminPaths.includes(pathname)) {
     return NextResponse.next();
   }
@@ -16,7 +16,7 @@ export function middleware(req: NextRequest) {
   const token = req.cookies.get(ADMIN_COOKIE_NAME)?.value;
   if (!isAdminTokenValid(token)) {
     const loginUrl = req.nextUrl.clone();
-    loginUrl.pathname = "/admin/login";
+    loginUrl.pathname = "/admin";
     return NextResponse.redirect(loginUrl);
   }
 

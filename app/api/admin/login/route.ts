@@ -10,10 +10,16 @@ export async function POST(req: NextRequest) {
   }
 
   const body = await req.json();
+  const username = body?.username;
   const password = body?.password;
 
-  if (typeof password !== "string" || password !== ADMIN_SECRET) {
-    return NextResponse.json({ message: "Password admin salah." }, { status: 401 });
+  if (
+    typeof username !== "string" || 
+    typeof password !== "string" || 
+    username !== (process.env.ADMIN_USERNAME || "admin") || 
+    password !== ADMIN_SECRET
+  ) {
+    return NextResponse.json({ message: "Username atau Password admin salah." }, { status: 401 });
   }
 
   const response = NextResponse.json({ ok: true });

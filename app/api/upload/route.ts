@@ -39,4 +39,3 @@ export async function POST(req: NextRequest) {
   const url = `${publicUrl}/${fileName}`;
   return NextResponse.json({ url, key: fileName });
 }
-

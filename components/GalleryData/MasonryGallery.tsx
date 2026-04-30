@@ -184,7 +184,7 @@ export default function MasonryGallery({ galleryItems }: MasonryGalleryProps) {
                 }`}
               >
                 <img
-                  src={item.src}
+                  src={item.src.includes('r2.dev') ? `/api/images/${item.src.split('r2.dev/').pop()}` : item.src}
                   alt={item.alt}
                   className="w-full h-full object-cover"
                 />
