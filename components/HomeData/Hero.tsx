@@ -26,13 +26,13 @@ const Hero: React.FC = () => {
           <div className="flex flex-col sm:flex-row w-full gap-4">
             <Link
               href="/donation"
-              className="text-[18px] md:text-[20px] bg-[#C4714A] text-white px-8 py-4 rounded-2xl font-semibold hover:bg-[#a66a48] transition-all transform hover:scale-105 cursor-pointer shadow-lg"
+              className="text-[18px] text-center md:text-[20px] bg-[#C4714A] text-white px-8 py-4 rounded-2xl font-semibold hover:bg-[#a66a48] transition-all transform hover:scale-105 cursor-pointer shadow-lg"
             >
               Donasi Sekarang
             </Link>
             <Link
               href="/profile"
-              className="text-[18px] md:text-[20px] bg-[#C4714A]  text-white px-8 py-4 rounded-2xl font-semibold  hover:bg-[#a66a48] transition-all cursor-pointer"
+              className="text-[18px] text-center md:text-[20px] bg-[#C4714A]  text-white px-8 py-4 rounded-2xl font-semibold  hover:bg-[#a66a48] transition-all cursor-pointer"
             >
               Profil Kami
             </Link>
