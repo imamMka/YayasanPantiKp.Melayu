@@ -3,7 +3,7 @@ import { deleteNews, deleteGallery, updateNews, updateGallery } from "@/lib/acti
 import Link from "next/link";
 
 // Server action wrappers for form submissions
-export async function deleteNewsAction(formData: FormData) {
+async function deleteNewsAction(formData: FormData) {
   "use server";
   const id = formData.get("id") as string;
   if (id) {
@@ -15,7 +15,7 @@ export async function deleteNewsAction(formData: FormData) {
   }
 }
 
-export async function deleteGalleryAction(formData: FormData) {
+async function deleteGalleryAction(formData: FormData) {
   "use server";
   const id = formData.get("id") as string;
   if (id) {
