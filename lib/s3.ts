@@ -1,9 +1,10 @@
-import S3 from "aws-sdk/clients/s3";
+import { S3Client } from "@aws-sdk/client-s3";
 
-export const s3 = new S3({
+export const s3 = new S3Client({
     endpoint: `https://${process.env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
-    accessKeyId: process.env.R2_ACCESS_KEY_ID,
-    secretAccessKey: process.env.R2_SECRET_ACCESS_KEY,
-    signatureVersion: "v4",
+    credentials: {
+        accessKeyId: process.env.R2_ACCESS_KEY_ID || "",
+        secretAccessKey: process.env.R2_SECRET_ACCESS_KEY || "",
+    },
     region: "auto",
-})
+});

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { s3 } from "@/lib/s3";
+import { PutObjectCommand } from "@aws-sdk/client-s3";
 
 export async function POST(req: NextRequest) {
   const bucket = process.env.R2_BUCKET_NAME;
@@ -23,12 +24,13 @@ export async function POST(req: NextRequest) {
   const fileName = `${Date.now()}-${file.name}`;
 
   try {
-    await s3.upload({
+    const command = new PutObjectCommand({
       Bucket: bucket,
       Key: fileName,
       Body: buffer,
       ContentType: file.type || "application/octet-stream",
-    }).promise();
+    });
+    await s3.send(command);
   } catch (error) {
     return NextResponse.json(
       { message: "Upload ke Cloudflare R2 gagal.", error: String(error) },

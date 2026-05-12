@@ -2,6 +2,7 @@
 import prisma from "./prisma";
 import { revalidatePath } from "next/cache";
 import { s3 } from "./s3";
+import { DeleteObjectCommand } from "@aws-sdk/client-s3";
 
 /**
  * NEWS ACTIONS
@@ -28,10 +29,10 @@ export async function deleteNews(id: string) {
   if (news?.imageKey) {
     console.log(`[R2] Deleting news file: ${news.imageKey}`);
     try {
-      await s3.deleteObject({
+      await s3.send(new DeleteObjectCommand({
         Bucket: process.env.R2_BUCKET_NAME!,
         Key: news.imageKey
-      }).promise();
+      }));
     } catch (error) {
       console.error(`[R2] Failed to delete news file: ${news.imageKey}`, error);
     }
@@ -59,10 +60,10 @@ export async function updateNews(id: string, data: { title?: string; content?: s
     if (oldNews?.imageKey && oldNews.imageKey !== data.imageKey) {
       console.log(`[R2] Deleting old news file: ${oldNews.imageKey}`);
       try {
-        await s3.deleteObject({
+        await s3.send(new DeleteObjectCommand({
           Bucket: process.env.R2_BUCKET_NAME!,
           Key: oldNews.imageKey
-        }).promise();
+        }));
       } catch (error) {
         console.error(`[R2] Failed to delete old news file: ${oldNews.imageKey}`, error);
       }
@@ -109,10 +110,10 @@ export async function deleteGallery(id: string) {
   if (gallery?.imageKey) {
     console.log(`[R2] Deleting gallery file: ${gallery.imageKey}`);
     try {
-      await s3.deleteObject({
+      await s3.send(new DeleteObjectCommand({
         Bucket: process.env.R2_BUCKET_NAME!,
         Key: gallery.imageKey
-      }).promise();
+      }));
     } catch (error) {
       console.error(`[R2] Failed to delete gallery file: ${gallery.imageKey}`, error);
     }
@@ -140,10 +141,10 @@ export async function updateGallery(id: string, data: { title?: string; imageUrl
     if (oldGallery?.imageKey && oldGallery.imageKey !== data.imageKey) {
       console.log(`[R2] Deleting old gallery file: ${oldGallery.imageKey}`);
       try {
-        await s3.deleteObject({
+        await s3.send(new DeleteObjectCommand({
           Bucket: process.env.R2_BUCKET_NAME!,
           Key: oldGallery.imageKey
-        }).promise();
+        }));
       } catch (error) {
         console.error(`[R2] Failed to delete old gallery file: ${oldGallery.imageKey}`, error);
       }
