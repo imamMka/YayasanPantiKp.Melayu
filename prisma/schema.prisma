@@ -9,6 +9,8 @@ datasource db {
 model News {
   id        Int      @id @default(autoincrement())
   title     String
+  slug      String   @unique
+  category  String   // e.g., "Kebutuhan", "Kegiatan", "Laporan"
   content   String
   quote     String?
   imageUrl  String   // public Cloudflare R2 URL
@@ -23,4 +25,12 @@ model Gallery {
   imageUrl    String   // public Cloudflare R2 URL
   imageKey    String?  // optional R2 object key / path
   createdAt   DateTime @default(now())
+}
+
+model Settings {
+  id            Int      @id @default(1)
+  adminUsername String   @default("admin")
+  adminSecret   String   
+  recoveryEmail String?
+  updatedAt     DateTime @updatedAt
 }

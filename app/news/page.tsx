@@ -10,7 +10,7 @@ export default async function NewsPage() {
   });
 
   return (
-    <main className="bg-[#F9F6F0] min-h-screen">
+    <main className="bg-white min-h-screen">
       <NewsHero />
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-8">

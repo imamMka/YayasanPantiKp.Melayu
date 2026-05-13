@@ -1,6 +1,6 @@
 "use client";
 
-import { Share2, Download } from "lucide-react"; // Opsional: gunakan icon library
+// Opsional: gunakan icon library
 
 export default function GalleryActions({
   src,

@@ -8,7 +8,7 @@ import { Socials } from "@/components/Footer";
 
 export default function Homepage() {
   return (
-    <main className="bg-[#F9F6F0] min-h-screen text-slate-800">
+    <main className="bg-white min-h-screen text-slate-800">
       <Hero />
       <EmergencyNeeds />
       <News />

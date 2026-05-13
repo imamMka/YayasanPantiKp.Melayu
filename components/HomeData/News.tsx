@@ -33,7 +33,7 @@ const News: React.FC = () => {
         </h2>
         <a
           href="/news"
-          className="text-[#C4714A] text-[18px] md:text-[22px] font-semibold hover:underline mt-4 md:mt-0"
+          className="text-amber-600 text-[18px] md:text-[22px] font-black hover:underline mt-4 md:mt-0"
         >
           Selengkapnya &rarr;
         </a>
@@ -55,7 +55,7 @@ const News: React.FC = () => {
             </div>
 
             <div className="p-6">
-              <span className="text-[12px] bg-[#E8F3ED] text-[#4A6B55] px-3 py-1 rounded-full uppercase font-bold tracking-wider">
+              <span className="text-[12px] bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full uppercase font-bold tracking-wider">
                 {item.tag}
               </span>
               <h3 className="text-[20px] font-bold mt-4 mb-2 text-[#2D2D2D] leading-snug min-h-[56px]">

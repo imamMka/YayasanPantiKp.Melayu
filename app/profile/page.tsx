@@ -8,7 +8,7 @@ import Contact from "../../components/ProfileData/Contact";
 
 export default function ProfilePage() {
   return (
-    <main className="bg-[#F9F6F0] min-h-screen text-slate-800">
+    <main className="bg-white min-h-screen text-slate-800">
       <ProfileHero />
       <History />
       <VisiMisi />

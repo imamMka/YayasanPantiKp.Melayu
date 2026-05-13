@@ -17,13 +17,10 @@ export default function FloatingWhatsApp() {
       className="fixed bottom-6 right-6 z-[999] group flex items-center gap-3"
       aria-label="Chat WhatsApp"
     >
-      {/* Tooltip Label (Muncul saat hover) */}
-      <span className="bg-white px-4 py-2 rounded-xl shadow-lg border border-gray-100 text-[#2D2D2D] font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-        Tanya Admin
-      </span>
 
       {/* Button Icon */}
-      <div className="bg-[#25D366] p-4 rounded-full shadow-2xl shadow-green-200 hover:scale-110 hover:bg-[#20ba5a] transition-all duration-300 flex items-center justify-center">
+      <div className="bg-[#25D366] flex flex-row gap-2 p-4 rounded-4xl shadow-2xl shadow-emerald-200 hover:scale-110 hover:bg-[#20ba5a] transition-all duration-300 flex items-center justify-center">
+        <p>Tanya Admin</p>
         <svg
           width="32"
           height="32"

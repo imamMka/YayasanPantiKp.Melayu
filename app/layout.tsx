@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
-import Navbar from "../components/Navbar";
-import Home from "./page";
-import { Footer, Socials } from "../components/Footer";
-import FloatingWhatsApp from "../components/FloatingWa";
+import ConditionalLayout from "../components/ConditionalLayout";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -27,12 +24,9 @@ export default function RootLayout({
       className={`${montserrat.variable} h-full antialiased overflow-x-hidden`}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar />
-        {children}
-        <Footer />
-
-        {/* Floating WhatsApp Button */}
-        <FloatingWhatsApp />
+        <ConditionalLayout>
+          {children}
+        </ConditionalLayout>
       </body>
     </html>
   );

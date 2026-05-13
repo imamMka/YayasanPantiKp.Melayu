@@ -5,7 +5,7 @@ export default function Legalitas() {
       desc: "SK Pengesahan Yayasan No. AHU-0012345.AH.01.04.2013",
       time: "Ditetapkan 14 Maret 2013 · Berlaku permanen",
       status: "Aktif",
-      color: "border-[#4A6B55] border-2 text-[#4A6B55]",
+      color: "border-emerald-600 border-2 text-emerald-600",
       fileUrl: "/kemenkumham.jpg", // Ganti dengan file asli di folder public
     },
     {
@@ -13,7 +13,7 @@ export default function Legalitas() {
       desc: "Izin Operasional Panti Asuhan No. 465/1234/DINSOS/2014",
       time: "Ditetapkan 20 Juni 2014 · Berlaku 5 tahun",
       status: "Terdaftar",
-      color: "border-[#C4714A] border-2 text-[#C4714A]",
+      color: "border-amber-600 border-2 text-amber-600",
       fileUrl: "/dinsos.jpg",
     },
     {
@@ -21,14 +21,14 @@ export default function Legalitas() {
       desc: "Surat Keterangan Terdaftar (SKT) No. 12345/DIRJEN.PAJAK/2015",
       time: "Ditetapkan 10 Januari 2015 · Berlaku 5 tahun",
       status: "Terdaftar",
-      color: "border-[#C4714A] border-2 text-[#C4714A]",
+      color: "border-amber-600 border-2 text-amber-600",
       fileUrl: "/pajak.jpg",
     },
   ];
 
   return (
     <section id="legalitas" className="container mx-auto px-6 py-20">
-      <p className="text-[20px] md:text-[24px] font-semibold text-[#4A6B55] uppercase tracking-widest mb-2">
+      <p className="text-[20px] md:text-[24px] font-black text-emerald-600 uppercase tracking-widest mb-2">
         Legalitas & Akreditasi
       </p>
       <h2 className="text-[48px] md:text-[64px] font-semibold text-[#2D2D2D] mb-4">
@@ -47,10 +47,10 @@ export default function Legalitas() {
             target="_blank"
             rel="noopener noreferrer"
             key={i}
-            className="flex flex-row justify-between hover:bg-[#C4714A]/10 items-center p-6 bg-white border border-gray-100 rounded-xl transition-all group"
+            className="flex flex-row justify-between hover:bg-amber-50 items-center p-6 bg-white border border-slate-100 rounded-xl transition-all group"
           >
             <div className="flex items-center gap-4">
-              <span className="hidden md:block p-2 text-[20px] md:text-[24px] bg-[#C4714A]/20 rounded group-hover:bg-[#C4714A]/40 transition-colors">
+              <span className="hidden md:block p-2 text-[20px] md:text-[24px] bg-amber-100 rounded group-hover:bg-amber-200 transition-colors">
                 📄
               </span>
               <div className="text-[#6E6E6E] flex flex-col  items-start justify-between">
@@ -62,7 +62,7 @@ export default function Legalitas() {
                 </p>
                 <p className="text-[14px] md:text-[18px] italic text-gray-400">
                   {item.time}{" "}
-                  <span className="ml-2 text-[#C4714A] non-italic font-medium underline">
+                  <span className="ml-2 text-amber-600 non-italic font-bold underline">
                     Lihat Dokumen
                   </span>
                 </p>
@@ -78,7 +78,7 @@ export default function Legalitas() {
       </div>
 
       {/* Button Unduh Semua (Mengarah ke satu file arsip atau file utama) */}
-      <div className="bg-[#E8E2D6] p-6 rounded-xl flex flex-col md:flex-row justify-between items-center border border-[#D1E7D6] gap-4">
+      <div className="bg-slate-50 p-6 rounded-xl flex flex-col md:flex-row justify-between items-center border border-slate-200 gap-4">
         <div className="flex flex-col items-start justify-between">
           <p className="text-[18px] md:text-[22px] font-semibold text-[#4A4A4A]">
             Unduh dokumen legalitas resmi kami
@@ -91,7 +91,7 @@ export default function Legalitas() {
         <a
           href="/docs/legalitas-lengkap-panti.zip" // Link file yang akan diunduh
           download="Legalitas_Panti_Kampung_Melayu.zip" // Atribut download memicu unduhan otomatis
-          className="w-full md:w-auto flex items-center justify-center bg-[#C58058] text-white px-8 py-3 rounded-lg text-[18px] md:text-[22px] font-bold shadow-lg hover:bg-[#a66a48] transition-all transform hover:scale-105"
+          className="w-full md:w-auto flex items-center justify-center bg-amber-600 text-white px-8 py-3 rounded-xl text-[18px] md:text-[22px] font-black shadow-lg shadow-amber-900/20 hover:bg-amber-700 transition-all transform hover:scale-105 active:scale-95"
         >
           Unduh semua file
         </a>
