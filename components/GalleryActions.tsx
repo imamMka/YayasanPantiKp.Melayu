@@ -50,13 +50,13 @@ export default function GalleryActions({
     <div className="flex gap-8 font-bold text-xs uppercase tracking-widest">
       <button
         onClick={handleShare}
-        className="hover:text-[#C4714A] transition-colors flex items-center gap-2"
+        className="hover:text-amber-600 transition-colors flex items-center gap-2"
       >
         Bagikan
       </button>
       <button
         onClick={handleDownload}
-        className="hover:text-[#C4714A] transition-colors flex items-center gap-2"
+        className="hover:text-amber-600 transition-colors flex items-center gap-2"
       >
         Simpan Gambar
       </button>

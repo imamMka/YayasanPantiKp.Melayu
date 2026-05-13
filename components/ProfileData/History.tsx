@@ -5,10 +5,10 @@ export default function History() {
       className="container mx-auto px-6 py-12 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-12 items-start"
     >
       <div className="md:col-span-7">
-        <p className="text-[16px] sm:text-[20px] md:text-[24px] font-bold text-[#4A6B55] uppercase tracking-[0.2em] mb-4">
+        <p className="text-[16px] sm:text-[20px] md:text-[24px] font-bold text-emerald-700 uppercase tracking-[0.2em] mb-4">
           Profil Yayasan
         </p>
-        <h2 className="text-[36px] sm:text-[48px] md:text-[64px] font-bold text-[#2D2D2D] leading-tight mb-8">
+        <h2 className="text-[36px] sm:text-[48px] md:text-[64px] font-bold text-slate-900 leading-tight mb-8">
           Sejarah Singkat
         </h2>
         <div className="space-y-6 text-slate-600 text-[18px] sm:text-[20px] md:text-[24px] leading-relaxed">
@@ -31,7 +31,7 @@ export default function History() {
           { label: "Dana tersalurkan", val: "Rp 800jt" },
           { label: "Berdiri & Berkarya", val: "12 Tahun" },
         ].map((stat, i) => (
-          <div key={i} className="bg-[#2D2D2D] text-white p-6 md:p-8 rounded-3xl shadow-xl hover:bg-[#363636] transition-colors">
+          <div key={i} className="bg-slate-950 text-white p-6 md:p-8 rounded-3xl shadow-xl hover:bg-slate-900 transition-colors">
             <p className="text-[36px] sm:text-[48px] md:text-[56px] font-black text-emerald-500 mb-1">
               {stat.val}
             </p>

@@ -36,7 +36,7 @@ export default async function PreviewPage({ params }: PageProps) {
   }));
 
   return (
-    <main className="bg-[#F9F6F0] min-h-screen">
+    <main className="bg-white min-h-screen">
       <div className="container mx-auto px-6 py-8">
         <Link
           href="/news"

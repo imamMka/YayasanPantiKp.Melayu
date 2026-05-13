@@ -14,10 +14,10 @@ const Contact: React.FC = () => {
         {/* Info Kontak */}
         <div className="lg:col-span-5 space-y-10">
           <div className="space-y-4 text-center lg:text-left">
-            <p className="text-[#4A6B55] font-black uppercase tracking-[0.25em] text-[14px] md:text-[16px]">
+            <p className="text-emerald-700 font-black uppercase tracking-[0.25em] text-[14px] md:text-[16px]">
               Hubungi Kami
             </p>
-            <h2 className="text-[36px] sm:text-[48px] md:text-[64px] font-black text-[#2D2D2D] leading-[1.1]">
+            <h2 className="text-[36px] sm:text-[48px] md:text-[64px] font-black text-slate-900 leading-[1.1]">
               Lokasi & <br className="hidden md:block" /> Akses Panti
             </h2>
             <p className="text-slate-500 text-[18px] md:text-[20px] font-medium max-w-md mx-auto lg:mx-0">
@@ -45,7 +45,7 @@ const Contact: React.FC = () => {
               label="Titik Lokasi"
               value="Jl. Melati No. 24, Beji, Kota Depok, Jawa Barat 16421"
               href={googleMapsLink}
-              color="bg-orange-50 text-orange-600"
+              color="bg-amber-50 text-amber-600"
             />
           </div>
         </div>

@@ -29,7 +29,7 @@ export default async function GalleryDetailPage({ params }: PageProps) {
   if (!imageData) {
     return (
       <main className="bg-white min-h-screen flex items-center justify-center">
-        <Link href="/gallery" className="text-[#C4714A] font-bold underline">
+        <Link href="/gallery" className="text-amber-600 font-bold underline">
           Kembali ke Galeri
         </Link>
       </main>
@@ -39,7 +39,7 @@ export default async function GalleryDetailPage({ params }: PageProps) {
   const displayTitle = decodedId.replace(/-/g, " ");
 
   return (
-    <main className="bg-[#F8F9FA] min-h-screen p-6 md:p-12 lg:p-20">
+    <main className="bg-white min-h-screen p-6 md:p-12 lg:p-20">
       {/* Container Utama: 
           - mt-20: Memberi jarak agar tidak tertutup navbar mobile 
           - items-start: Menjaga tombol dan card tetap rata kiri
@@ -49,12 +49,12 @@ export default async function GalleryDetailPage({ params }: PageProps) {
         {/* Tombol Close (Sekarang di dalam Flex) */}
         <Link
           href="/gallery"
-          className="flex items-center gap-3 bg-white p-3 px-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group"
+          className="flex items-center gap-3 bg-white p-3 px-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all group"
         >
-          <span className="text-xl font-bold text-[#C4714A] group-hover:rotate-90 transition-transform duration-300">
+          <span className="text-xl font-bold text-amber-600 group-hover:rotate-90 transition-transform duration-300">
             ✕
           </span>
-          <span className="font-bold text-[#2D2D2D] tracking-widest text-sm">
+          <span className="font-bold text-slate-900 tracking-widest text-sm">
             CLOSE
           </span>
         </Link>
@@ -69,7 +69,7 @@ export default async function GalleryDetailPage({ params }: PageProps) {
             />
 
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-8 md:p-12">
-              <span className="inline-block bg-[#C4714A] text-white text-[10px] md:text-[12px] font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">
+              <span className="inline-block bg-emerald-600 text-white text-[10px] md:text-[12px] font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4">
                 Dokumentasi Kegiatan
               </span>
               <h1 className="text-white text-3xl md:text-5xl font-bold capitalize leading-tight">
@@ -80,7 +80,7 @@ export default async function GalleryDetailPage({ params }: PageProps) {
         </div>
 
         {/* Info Bawah (Tetap di dalam Flex Col) */}
-        <div className="w-full flex flex-col md:flex-row justify-between items-center gap-4 text-[#6E6E6E] pt-4">
+        <div className="w-full flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 pt-4">
           <p className="font-medium text-sm">
             © 2026 Yayasan Panti Asuhan Kampung Melayu
           </p>

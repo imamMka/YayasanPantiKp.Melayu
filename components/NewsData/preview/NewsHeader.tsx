@@ -38,7 +38,7 @@ export default function NewsHeader({ article }: NewsHeaderProps) {
           <span className="text-gray-600">{article.category}</span>
         </nav>
 
-        <h1 className="text-[24px] md:text-[32px] lg:text-[48px] font-bold text-[#2D3E33] leading-tight mb-8">
+        <h1 className="text-[24px] md:text-[32px] lg:text-[48px] font-black text-slate-950 leading-tight mb-8 tracking-tighter">
           {article.title}
         </h1>
       </div>

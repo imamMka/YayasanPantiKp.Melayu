@@ -15,10 +15,10 @@ const needs: NeedItem[] = [
 
 const EmergencyNeeds: React.FC = () => {
   return (
-    <section className="w-full border-y border-[#E8E2D6] bg-white">
+    <section className="w-full border-y border-slate-100 bg-white">
       <div className="container mx-auto">
         {/* Container dengan overflow-x-auto agar bisa di-scroll di HP */}
-        <div className="flex no-scrollbar items-center divide-x divide-[#E8E2D6]">
+        <div className="flex no-scrollbar items-center divide-x divide-slate-100">
           {needs.map((item) => (
             <div
               key={item.id}
@@ -30,7 +30,7 @@ const EmergencyNeeds: React.FC = () => {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                 )}
                 <span
-                  className={`relative inline-flex rounded-full h-3 w-3 ${item.isUrgent ? "bg-red-600" : "bg-orange-400"}`}
+                  className={`relative inline-flex rounded-full h-3 w-3 ${item.isUrgent ? "bg-red-600" : "bg-amber-400"}`}
                 ></span>
               </div>
 

@@ -25,10 +25,10 @@ const StrukturOrganisasi: React.FC = () => {
   return (
     <section id="struktur-organisasi" className="container mx-auto px-6 py-20">
       <div className="mb-10">
-        <p className="text-[20px] md:text-[24px] text-[#4A6B55] font-semibold uppercase tracking-[0.2em] mb-2">
+        <p className="text-[20px] md:text-[24px] text-emerald-700 font-bold uppercase tracking-[0.2em] mb-2">
           Struktur Pengurus
         </p>
-        <h2 className="text-[48px] md:text-[64px] font-semibold text-[#2D2D2D]">
+        <h2 className="text-[48px] md:text-[64px] font-black text-slate-950 tracking-tighter">
           Pengelola Yayasan
         </h2>
       </div>
@@ -55,7 +55,7 @@ const StrukturOrganisasi: React.FC = () => {
 
             {/* Informasi Pengurus */}
             <div className="flex flex-col">
-              <h4 className="text-[20px] md:text-[24px] font-semibold text-[#2D3E33] leading-tight">
+              <h4 className="text-[20px] md:text-[24px] font-black text-slate-900 leading-tight">
                 {staff.name}
               </h4>
               <p className="text-[14px] md:text-[16px] text-gray-500 tracking-wide mt-1">

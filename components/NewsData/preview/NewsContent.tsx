@@ -7,7 +7,7 @@ interface NewsContentProps {
 
 export default function NewsContent({ article }: NewsContentProps) {
   return (
-    <article className="p-8 md:p-12 text-[20px] md:text-[24px] text-[#6e6e6e] leading-relaxed space-y-6">
+    <article className="p-8 md:p-12 text-[20px] md:text-[24px] text-slate-600 leading-relaxed space-y-6">
       <div className="whitespace-pre-wrap">
         {article.content}
       </div>
@@ -25,7 +25,7 @@ export default function NewsContent({ article }: NewsContentProps) {
         {["#Yayasan", "#PantiAsuhan", "#KampungMelayu"].map((tag) => (
           <span
             key={tag}
-            className="px-6 py-2 bg-gray-50 border border-gray-100 rounded-full text-[#6E6E6E] hover:bg-gray-100 "
+            className="px-6 py-2 bg-slate-50 border border-slate-100 rounded-full text-slate-500 hover:bg-slate-100 transition-colors"
           >
             {tag}
           </span>
