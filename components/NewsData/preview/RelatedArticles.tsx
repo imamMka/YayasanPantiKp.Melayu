@@ -1,6 +1,14 @@
 import Link from "next/link";
 
-export default function RelatedArticles({ articles }: { articles?: any[] }) {
+interface RelatedArticle {
+  slug: string;
+  image: string;
+  title: string;
+  category: string;
+  date: string;
+}
+
+export default function RelatedArticles({ articles }: { articles?: RelatedArticle[] }) {
   if (!articles || articles.length === 0) {
     return null;
   }

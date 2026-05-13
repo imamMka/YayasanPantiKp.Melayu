@@ -14,8 +14,8 @@ export default function NewsContent({ slug }: NewsContentProps) {
       {/* Blockquote khas di foto */}
       <blockquote className="border-l-4 border-[#4A6B55] pl-6 py-2 my-10 italic">
         <p className=" text-[#4A6B55] italic mb-2">
-          "Saya belajar bukan karena ingin menang, tapi karena di sini ada Kak
-          Fadhil yang selalu percaya saya bisa."
+          &quot;Saya belajar bukan karena ingin menang, tapi karena di sini ada Kak
+          Fadhil yang selalu percaya saya bisa.&quot;
         </p>
         <cite className=" text-[#4A6B55] italic">— Dito Rahman, 14 Thn</cite>
       </blockquote>

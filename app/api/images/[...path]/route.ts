@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 // FIX: Bypass SSL certificate issues in development
 // This must be set at the top level to take effect before the first fetch
 if (process.env.NODE_ENV === "development") {
-  (process as any).env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+  (process as unknown as { env: Record<string, string> }).env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 }
 
 export async function GET(
@@ -36,8 +36,9 @@ export async function GET(
         "Cache-Control": "public, max-age=31536000, immutable",
       },
     });
-  } catch (error: any) {
-    console.error(`[ImageProxy] Error fetching ${r2Url}:`, error.message);
-    return new NextResponse(`Error fetching image: ${error.message}`, { status: 500 });
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    console.error(`[ImageProxy] Error fetching ${r2Url}:`, errorMessage);
+    return new NextResponse(`Error fetching image: ${errorMessage}`, { status: 500 });
   }
 }

@@ -12,9 +12,9 @@ export default function VisiMisi() {
           </h3>
         </div>
         <p className="text-[#4A6B55] text-[20px] md:text-[24px] italic leading-relaxed">
-          "Menjadi pusat pengasuhan dan pendidikan yang mampu mencetak generasi
+          &quot;Menjadi pusat pengasuhan dan pendidikan yang mampu mencetak generasi
           mandiri, berakhlak mulia, dan bermanfaat bagi nusa, bangsa, serta
-          agama."
+          agama.&quot;
         </p>
       </div>
       <div className="bg-white p-10 rounded-2xl border border-gray-100 shadow-sm">

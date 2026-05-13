@@ -12,7 +12,7 @@ interface NewsItem {
   quote?: string;
 }
 
-export default function NewsGrid({ data }: { data: any[] }) {
+export default function NewsGrid({ data }: { data: NewsItem[] }) {
   console.log("NewsGrid data:", data);
   if (!data || !Array.isArray(data) || data.length === 0) {
     return <p className="text-gray-500 italic">Belum ada berita tersedia.</p>;
@@ -41,7 +41,7 @@ export default function NewsGrid({ data }: { data: any[] }) {
 
             {news.quote && (
               <p className="italic text-blue-600 border-l-4 border-blue-600 pl-4 mb-4">
-                "{news.quote}"
+                &quot;{news.quote}&quot;
               </p>
             )}
 
