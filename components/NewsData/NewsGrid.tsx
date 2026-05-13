@@ -9,7 +9,8 @@ interface NewsItem {
   title: string;
   content: string;
   imageUrl: string;
-  quote?: string;
+  quote: string | null;
+  imageKey?: string | null;
 }
 
 export default function NewsGrid({ data }: { data: NewsItem[] }) {
