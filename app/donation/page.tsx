@@ -13,7 +13,7 @@ export default function DonationPage() {
 
   const handleDownload = async () => {
     try {
-      const response = await fetch("/qris.jpg"); 
+      const response = await fetch("/qris.jpg");
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
@@ -28,7 +28,7 @@ export default function DonationPage() {
     }
   };
 
-  const waNumber = "6281219118993"; 
+  const waNumber = "6281219118993";
   const waMessage = encodeURIComponent("Alhamdulillah saya sudah berdonasi");
 
   return (
@@ -53,11 +53,11 @@ export default function DonationPage() {
                 </h3>
                 <p className="text-slate-400 text-sm font-medium">Scan untuk donasi cepat & aman</p>
               </div>
-              
+
               <div className="w-full max-w-[320px] aspect-square bg-amber-50/50 rounded-[2rem] p-6 flex items-center justify-center border-2 border-dashed border-amber-200 relative overflow-hidden group shadow-inner">
                 <img src="/qris.jpg" alt="QRIS Yayasan Panti Asuhan" className="w-full h-full object-contain mix-blend-multiply" />
               </div>
-              
+
               <button
                 onClick={handleDownload}
                 className="mt-8 w-full max-w-[200px] py-4 bg-amber-600 text-white rounded-2xl font-black text-[16px] hover:bg-amber-700 transition-all transform hover:-translate-y-1 shadow-lg shadow-amber-900/20 active:scale-95"
@@ -76,7 +76,7 @@ export default function DonationPage() {
                     Rekening Bank
                   </h3>
                 </div>
-                
+
                 <div className="bg-emerald-50 p-6 md:p-8 rounded-[2rem] relative border border-emerald-100 group">
                   <p className="text-emerald-800 font-black text-[22px] md:text-[28px] mb-1">BSI</p>
                   <p className="text-emerald-700/60 text-[14px] md:text-[18px] font-medium mb-4">a/n Panti Asuhan Kampung Melayu</p>
@@ -87,7 +87,7 @@ export default function DonationPage() {
                     onClick={() => handleCopy("123456789012", "bsi")}
                     className="mt-4 w-full sm:w-auto sm:absolute sm:right-6 sm:bottom-6 bg-emerald-600 text-white px-8 py-3 rounded-xl font-bold text-[14px] md:text-[16px] shadow-lg hover:bg-emerald-700 transition-all active:scale-95"
                   >
-                    {copiedText === "bsi" ? "Berhasil Disalin!" : "Salin Nomor"}
+                    {copiedText === "bsi" ? "Tersalin!" : "Salin "}
                   </button>
                 </div>
               </div>
