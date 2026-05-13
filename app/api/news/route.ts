@@ -9,6 +9,12 @@ export async function POST(req: NextRequest) {
     const quote = typeof body.quote === "string" ? body.quote.trim() : undefined;
     const imageUrl = typeof body.imageUrl === "string" ? body.imageUrl.trim() : "";
     const imageKey = typeof body.imageKey === "string" ? body.imageKey.trim() : undefined;
+    const category = typeof body.category === "string" ? body.category.trim() : "Umum";
+    
+    // Generate slug if not provided
+    const slug = typeof body.slug === "string" && body.slug.trim() 
+      ? body.slug.trim().toLowerCase().replace(/\s+/g, '-')
+      : title.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
 
     if (!title || !content || !imageUrl) {
       return NextResponse.json(
@@ -18,7 +24,7 @@ export async function POST(req: NextRequest) {
     }
 
     const news = await prisma.news.create({
-      data: { title, content, quote, imageUrl, imageKey },
+      data: { title, slug, category, content, quote, imageUrl, imageKey },
     });
 
     return NextResponse.json({ ok: true, news });
