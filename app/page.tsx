@@ -1,6 +1,5 @@
 import prisma from "@/lib/prisma";
 import Hero from "../components/HomeData/Hero";
-import EmergencyNeeds from "../components/HomeData/EmergencyNeeds";
 import News from "../components/HomeData/News";
 import Gallery from "../components/HomeData/Gallery";
 import DonationTransparancy from "../components/HomeData/DonationTransparancy";
@@ -29,7 +28,6 @@ export default async function Homepage() {
   return (
     <main className="bg-white min-h-screen text-slate-800">
       <Hero />
-      <EmergencyNeeds />
       <News articles={latestNews} />
       <Gallery items={latestGallery} totalCount={totalGalleryCount} />
       <DonationTransparancy />

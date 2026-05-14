@@ -21,9 +21,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} h-full antialiased overflow-x-hidden`}
+      className={`${montserrat.variable} h-full antialiased overflow-x-hidden w-full`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col overflow-x-hidden w-full relative">
         <ConditionalLayout>
           {children}
         </ConditionalLayout>
