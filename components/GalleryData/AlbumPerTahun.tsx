@@ -1,66 +1,72 @@
 import Link from "next/link";
+import { Album, Gallery } from "@prisma/client";
 
-const albums = [
-  {
-    year: "2026",
-    count: "25 Foto",
-    previews: ["/panti.jpg", "/panti-2.jpg", "/panti-3.jpg", "/panti-4.jpg"],
-  },
-  {
-    year: "2025",
-    count: "45 Foto",
-    previews: ["/panti-2.jpg", "/panti-4.jpg", "/panti.jpg", "/panti-3.jpg"],
-  },
-  {
-    year: "2023",
-    count: "21 Foto",
-    previews: ["/panti-3.jpg", "/panti.jpg", "/panti-4.jpg", "/panti-2.jpg"],
-  },
-  {
-    year: "2022",
-    count: "15 Foto",
-    previews: ["/panti-4.jpg", "/panti-3.jpg", "/panti-2.jpg", "/panti.jpg"],
-  },
-];
+interface AlbumWithPhotos extends Album {
+  photos: Gallery[];
+  _count: {
+    photos: number;
+  };
+}
 
-export default function AlbumPerTahun() {
+interface AlbumPerTahunProps {
+  albums?: AlbumWithPhotos[];
+}
+
+export default function AlbumPerTahun({ albums = [] }: AlbumPerTahunProps) {
+  if (albums.length === 0) return null;
+
   return (
     <section className="mb-20">
-      <h2 className="text-[48px] md:text-[64px] font-black text-slate-950 mb-8 tracking-tighter">
-        Album Pertahun
+      <h2 className="text-[40px] md:text-[64px] font-black text-slate-950 mb-8 tracking-tighter">
+        Album & Sorotan
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {albums.map((album, i) => (
-          /* Membungkus card dengan Link */
+        {albums.map((album) => (
           <Link
-            key={i}
-            href={`/gallery/${album.year}`} // Arahkan ke route dinamis berdasarkan tahun
+            key={album.id}
+            href={`/gallery/album/${album.id}`}
             className="group block cursor-pointer"
           >
-            <div className="bg-white p-3 rounded-2xl border border-gray-100 shadow-sm group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300">
-              {/* Grid Mini Preview */}
-              <div className="grid grid-cols-2 gap-1.5 mb-4 overflow-hidden rounded-xl">
-                {album.previews.map((img, idx) => (
-                  <div
-                    key={idx}
-                    className="aspect-square bg-gray-100 overflow-hidden"
-                  >
-                    <img
-                      src={img}
-                      alt={`Preview ${idx}`}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
+            <div className="bg-white p-3 rounded-[2.5rem] border border-slate-100 shadow-sm group-hover:shadow-xl group-hover:-translate-y-2 transition-all duration-500">
+              {/* Grid Mini Preview (Instagram Highlights style) */}
+              <div className="grid grid-cols-2 gap-1.5 mb-4 overflow-hidden rounded-[1.8rem] aspect-square">
+                {album.photos.length > 0 ? (
+                  album.photos.map((photo, idx) => {
+                    const imageUrl = photo.imageUrl.includes('r2.dev') 
+                      ? `/api/images/${photo.imageUrl.split('r2.dev/').pop()}` 
+                      : photo.imageUrl;
+                    
+                    return (
+                      <div
+                        key={photo.id}
+                        className="aspect-square bg-slate-50 overflow-hidden"
+                      >
+                        <img
+                          src={imageUrl}
+                          alt={`Preview ${idx}`}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
+                      </div>
+                    );
+                  })
+                ) : (
+                  <div className="col-span-2 flex items-center justify-center bg-slate-50 text-slate-300">
+                    Belum ada foto
                   </div>
+                )}
+                {/* Fallback if less than 4 photos */}
+                {[...Array(Math.max(0, 4 - album.photos.length))].map((_, i) => (
+                  <div key={`empty-${i}`} className="aspect-square bg-slate-50" />
                 ))}
               </div>
 
               {/* Info Album */}
-              <div className="px-1 pb-1">
-                <h4 className="font-bold text-slate-900 text-[20px] md:text-[24px] mb-1 group-hover:text-amber-600 transition-colors">
-                  {album.year}
+              <div className="px-2 pb-2 text-center">
+                <h4 className="font-black text-slate-900 text-[18px] md:text-[22px] mb-0.5 group-hover:text-amber-600 transition-colors truncate">
+                  {album.title}
                 </h4>
-                <p className="text-[16px] md:text-[18px] text-slate-500 font-medium">
-                  {album.count}
+                <p className="text-[14px] md:text-[16px] text-slate-500 font-bold uppercase tracking-widest opacity-60">
+                  {album.year} • {album._count.photos} Foto
                 </p>
               </div>
             </div>

@@ -22,8 +22,8 @@ export default function FloatingWhatsApp() {
       <div className="bg-[#25D366] flex flex-row gap-2 p-4 rounded-4xl shadow-2xl shadow-emerald-200 hover:scale-110 hover:bg-[#20ba5a] transition-all duration-300 flex items-center justify-center">
         <p>Tanya Admin</p>
         <svg
-          width="32"
-          height="32"
+          width="28"
+          height="28"
           viewBox="0 0 24 24"
           fill="white"
           xmlns="http://www.w3.org/2000/svg"

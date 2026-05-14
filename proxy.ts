@@ -8,8 +8,14 @@ export default function proxy(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const publicAdminPaths = ["/admin"];
-  if (publicAdminPaths.includes(pathname)) {
+  const normalizedPathname = pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+  const publicAdminPaths = ["/admin", "/admin/forgot-password", "/admin/verify", "/admin/reset-password"];
+  const isPublicPath = publicAdminPaths.includes(normalizedPathname) || 
+                       normalizedPathname.startsWith("/admin/forgot-password/") || 
+                       normalizedPathname.startsWith("/admin/verify/") || 
+                       normalizedPathname.startsWith("/admin/reset-password/");
+
+  if (isPublicPath || normalizedPathname === "/admin") {
     return NextResponse.next();
   }
 

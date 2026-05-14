@@ -35,7 +35,7 @@ export default function AdminLayout({
   const handleLogout = async () => {
     // Logic to clear cookie and redirect
     await fetch("/api/admin/logout", { method: "POST" });
-    router.push("/admin");
+    router.push("/");
     router.refresh();
   };
 

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Shield, User, Lock, Loader2, ArrowRight } from "lucide-react";
 
 export default function AdminLoginForm() {
@@ -46,17 +47,17 @@ export default function AdminLoginForm() {
         <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl" />
 
         <div className="text-center mb-10 relative z-10">
-            <div className="inline-flex p-4 bg-emerald-600 rounded-3xl mb-6 shadow-lg shadow-emerald-200">
-                <Shield className="w-8 h-8 text-white" />
-            </div>
-            <h1 className="text-3xl font-bold text-slate-900 mb-2">
+          <div className="inline-flex p-4 bg-emerald-600 rounded-3xl mb-6 shadow-lg shadow-emerald-200">
+            <Shield className="w-8 h-8 text-white" />
+          </div>
+          <h1 className="text-3xl font-bold text-slate-900 mb-2">
             Panel Admin
-            </h1>
-            <p className="text-slate-500 font-medium">
+          </h1>
+          <p className="text-slate-500 font-medium">
             Yayasan Panti Asuhan Kp Melayu
-            </p>
+          </p>
         </div>
-        
+
         <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
           <div className="space-y-2">
             <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest ml-1">
@@ -94,9 +95,11 @@ export default function AdminLoginForm() {
 
           {error ? (
             <div className="bg-red-50 text-red-600 p-4 rounded-2xl text-sm border border-red-100 flex items-center animate-shake">
-                <span className="mr-2">⚠️</span> {error}
+              <span className="mr-2">⚠️</span> {error}
             </div>
           ) : null}
+
+
 
           <button
             type="submit"
@@ -114,8 +117,25 @@ export default function AdminLoginForm() {
           </button>
         </form>
 
-        <div className="mt-10 text-center text-xs text-slate-400 font-medium relative z-10">
+        <div className="mt-4 flex justify-center relative z-20">
+          <Link
+            href="/admin/forgot-password"
+            className="text-sm font-bold text-emerald-600 hover:text-emerald-700 bg-emerald-50 px-4 py-2 rounded-xl transition-all shadow-sm border border-emerald-100"
+          >
+            Lupa Password?
+          </Link>
+        </div>
+
+        <div className="mt-8 flex flex-col items-center gap-4 relative z-10">
+          <Link
+            href="/"
+            className="text-slate-400 hover:text-emerald-600 font-bold text-sm transition-colors flex items-center gap-2"
+          >
+            ← Kembali ke Beranda
+          </Link>
+          <div className="text-[10px] text-slate-300 font-bold uppercase tracking-[0.2em]">
             Akses Terbatas • © 2026 Yayasan Panti Asuhan
+          </div>
         </div>
       </div>
     </main>

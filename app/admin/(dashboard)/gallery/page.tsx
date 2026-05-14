@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma";
 import Link from "next/link";
-import { Plus, ImageIcon, Calendar } from "lucide-react";
+import { Plus, ImageIcon, Calendar, FolderHeart } from "lucide-react";
 import { deleteGallery } from "@/lib/actions";
 import DeleteButton from "@/components/DeleteButton";
 import { Gallery } from "@prisma/client";
@@ -23,13 +23,22 @@ export default async function GalleryPage() {
           <h1 className="text-2xl font-bold text-slate-900">Galeri Foto</h1>
           <p className="text-slate-500 text-sm">Kelola dokumentasi kegiatan dan foto anak asuh.</p>
         </div>
-        <Link
-          href="/admin/gallery/new"
-          className="inline-flex items-center justify-center px-4 py-2.5 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-all shadow-sm shadow-emerald-200"
-        >
-          <Plus className="w-5 h-5 mr-2" />
-          Unggah Foto Baru
-        </Link>
+        <div className="flex gap-3">
+          <Link
+            href="/admin/gallery/albums"
+            className="inline-flex items-center justify-center px-4 py-2.5 bg-white text-slate-600 font-semibold rounded-xl hover:bg-slate-50 transition-all border border-slate-200 shadow-sm"
+          >
+            <FolderHeart className="w-5 h-5 mr-2 text-emerald-600" />
+            Kelola Sorotan
+          </Link>
+          <Link
+            href="/admin/gallery/new"
+            className="inline-flex items-center justify-center px-4 py-2.5 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-all shadow-sm shadow-emerald-200"
+          >
+            <Plus className="w-5 h-5 mr-2" />
+            Unggah Foto Baru
+          </Link>
+        </div>
       </div>
 
       {items.length === 0 ? (

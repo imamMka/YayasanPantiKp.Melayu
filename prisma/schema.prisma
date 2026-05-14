@@ -24,7 +24,19 @@ model Gallery {
   description String?
   imageUrl    String   // public Cloudflare R2 URL
   imageKey    String?  // optional R2 object key / path
+  albumId     Int?     // Optional connection to an album
+  album       Album?   @relation(fields: [albumId], references: [id])
   createdAt   DateTime @default(now())
+}
+
+model Album {
+  id          Int       @id @default(autoincrement())
+  title       String    // e.g. "Ramadhan 2024", "Pendidikan"
+  description String?
+  coverImage  String?   // URL for the highlight cover
+  year        Int       // Grouping year (e.g. 2026)
+  photos      Gallery[]
+  createdAt   DateTime  @default(now())
 }
 
 model Settings {
