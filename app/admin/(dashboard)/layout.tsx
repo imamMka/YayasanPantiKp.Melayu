@@ -3,13 +3,13 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { 
-  LayoutDashboard, 
-  FileText, 
-  Image as ImageIcon, 
-  Settings, 
-  LogOut, 
-  Menu, 
+import {
+  LayoutDashboard,
+  FileText,
+  Image as ImageIcon,
+  Settings,
+  LogOut,
+  Menu,
   Shield
 } from "lucide-react";
 
@@ -43,7 +43,7 @@ export default function AdminLayout({
     <div className="min-h-screen bg-white flex font-sans">
       {/* Mobile Sidebar Overlay */}
       {isSidebarOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-slate-900/50 z-40 lg:hidden"
           onClick={() => setIsSidebarOpen(false)}
         />
@@ -73,8 +73,8 @@ export default function AdminLayout({
                   onClick={() => setIsSidebarOpen(false)}
                   className={`
                     flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all
-                    ${isActive(item.href) 
-                      ? "bg-emerald-50 text-emerald-700 shadow-sm border border-emerald-100" 
+                    ${isActive(item.href)
+                      ? "bg-emerald-50 text-emerald-700 shadow-sm border border-emerald-100"
                       : "text-slate-600 hover:bg-slate-50 hover:text-emerald-600"}
                   `}
                 >
@@ -89,9 +89,9 @@ export default function AdminLayout({
           <div className="p-4 border-t border-slate-100">
             <button
               onClick={handleLogout}
-              className="flex w-full items-center px-4 py-3 text-sm font-medium text-slate-600 rounded-xl hover:bg-red-50 hover:text-red-600 transition-all"
+              className="flex w-full items-center px-4 py-3 text-sm font-medium text-red-600 rounded-xl hover:bg-red-50 hover:text-red-600 transition-all"
             >
-              <LogOut className="w-5 h-5 mr-3 text-slate-400" />
+              <LogOut className="w-5 h-5 mr-3 text-red-600" />
               Keluar
             </button>
           </div>

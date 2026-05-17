@@ -47,7 +47,7 @@ export default function Legalitas() {
             target="_blank"
             rel="noopener noreferrer"
             key={i}
-            className="flex flex-row justify-between hover:bg-amber-50 items-center p-6 bg-white border border-slate-100 rounded-xl transition-all group"
+            className="flex flex-col md:flex-row md:justify-between justify-start hover:bg-amber-50 items-start md:items-center p-6 bg-white border border-slate-100 rounded-xl transition-all group"
           >
             <div className="flex items-center gap-4">
               <span className="hidden md:block p-2 text-[20px] md:text-[24px] bg-amber-100 rounded group-hover:bg-amber-200 transition-colors">

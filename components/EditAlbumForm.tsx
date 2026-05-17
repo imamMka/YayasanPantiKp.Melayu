@@ -2,10 +2,10 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { 
-  Save, 
-  Type, 
-  Loader2, 
+import {
+  Save,
+  Type,
+  Loader2,
   ChevronLeft,
   Calendar,
   Image as ImageIcon,
@@ -31,18 +31,18 @@ export default function EditAlbumForm({ album, allGalleryPhotos }: EditAlbumForm
     description: album.description || "",
     coverImage: album.coverImage || "",
   });
-  
+
   const [selectedPhotoIds, setSelectedPhotoIds] = useState<number[]>(
     album.photos.map((p: any) => p.id)
   );
   const [showCoverPicker, setShowCoverPicker] = useState(false);
 
-  const filteredPhotos = allGalleryPhotos.filter(p => 
+  const filteredPhotos = allGalleryPhotos.filter(p =>
     p.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const togglePhoto = (id: number) => {
-    setSelectedPhotoIds(prev => 
+    setSelectedPhotoIds(prev =>
       prev.includes(id) ? prev.filter(p => p !== id) : [...prev, id]
     );
   };
@@ -58,7 +58,7 @@ export default function EditAlbumForm({ album, allGalleryPhotos }: EditAlbumForm
         coverImage: formData.coverImage,
         photoIds: selectedPhotoIds
       });
-      
+
       router.push("/admin/gallery/albums");
       router.refresh();
     } catch (err) {
@@ -91,9 +91,9 @@ export default function EditAlbumForm({ album, allGalleryPhotos }: EditAlbumForm
             <Type className="w-5 h-5 text-emerald-500" />
             Informasi Sorotan
           </h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-             <div className="md:col-span-3">
+            <div className="md:col-span-3">
               <label className="block text-xs font-bold text-slate-400 uppercase mb-2 ml-1">Judul Sorotan</label>
               <input
                 type="text"
@@ -116,24 +116,24 @@ export default function EditAlbumForm({ album, allGalleryPhotos }: EditAlbumForm
           <div>
             <label className="block text-xs font-bold text-slate-400 uppercase mb-2 ml-1">Cover Sorotan (Hanya dari Galeri)</label>
             <div className="flex items-center gap-6">
-              <div 
+              <div
                 onClick={() => setShowCoverPicker(true)}
                 className="relative group w-32 h-32 rounded-full overflow-hidden border-4 border-emerald-50 shadow-md cursor-pointer hover:border-emerald-200 transition-all"
               >
-                 {formData.coverImage ? (
-                    <img
-                      src={formData.coverImage.includes('r2.dev') ? `/api/images/${formData.coverImage.split('r2.dev/').pop()}` : formData.coverImage}
-                      className="w-full h-full object-cover"
-                      alt=""
-                    />
-                 ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-slate-50 text-slate-300">
-                      <ImageIcon className="w-8 h-8" />
-                    </div>
-                 )}
-                 <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-[10px] font-bold">
-                    Ganti Cover
-                 </div>
+                {formData.coverImage ? (
+                  <img
+                    src={formData.coverImage.includes('r2.dev') ? `/api/images/${formData.coverImage.split('r2.dev/').pop()}` : formData.coverImage}
+                    className="w-full h-full object-cover"
+                    alt=""
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-slate-50 text-slate-300">
+                    <ImageIcon className="w-8 h-8" />
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-[10px] font-bold">
+                  Ganti Cover
+                </div>
               </div>
               <div className="space-y-1">
                 <p className="text-xs text-slate-400 font-medium">Klik lingkaran untuk memilih foto sampul dari database.</p>
@@ -152,12 +152,12 @@ export default function EditAlbumForm({ album, allGalleryPhotos }: EditAlbumForm
             </h3>
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-              <input 
+              <input
                 type="text"
                 placeholder="Cari foto..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500"
+                className="pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm text-black focus:ring-2 focus:ring-emerald-500"
               />
             </div>
           </div>
@@ -166,17 +166,16 @@ export default function EditAlbumForm({ album, allGalleryPhotos }: EditAlbumForm
             {filteredPhotos.map((photo) => {
               const isSelected = selectedPhotoIds.includes(photo.id);
               const isCover = formData.coverImage === photo.imageUrl;
-              const imageUrl = photo.imageUrl.includes('r2.dev') 
-                ? `/api/images/${photo.imageUrl.split('r2.dev/').pop()}` 
+              const imageUrl = photo.imageUrl.includes('r2.dev')
+                ? `/api/images/${photo.imageUrl.split('r2.dev/').pop()}`
                 : photo.imageUrl;
 
               return (
-                <div 
+                <div
                   key={photo.id}
                   onClick={() => togglePhoto(photo.id)}
-                  className={`relative group aspect-square rounded-2xl overflow-hidden cursor-pointer border-2 transition-all ${
-                    isSelected ? "border-emerald-500 ring-2 ring-emerald-500/20" : "border-transparent opacity-70 hover:opacity-100"
-                  }`}
+                  className={`relative group aspect-square rounded-2xl overflow-hidden cursor-pointer border-2 transition-all ${isSelected ? "border-emerald-500 ring-2 ring-emerald-500/20" : "border-transparent opacity-70 hover:opacity-100"
+                    }`}
                 >
                   <img src={imageUrl} alt={photo.title} className="w-full h-full object-cover" />
                   <div className={`absolute top-2 right-2 p-1 rounded-full ${isSelected ? "bg-emerald-500 text-white" : "bg-white/80 text-slate-300"}`}>
@@ -187,7 +186,7 @@ export default function EditAlbumForm({ album, allGalleryPhotos }: EditAlbumForm
                       COVER
                     </div>
                   )}
-                  <div 
+                  <div
                     onClick={(e) => {
                       e.stopPropagation();
                       setFormData(prev => ({ ...prev, coverImage: photo.imageUrl }));
@@ -204,18 +203,11 @@ export default function EditAlbumForm({ album, allGalleryPhotos }: EditAlbumForm
         </div>
 
         {/* Action Buttons */}
-        <div className="flex justify-end gap-3 sticky bottom-6 z-10">
-          <button
-            type="button"
-            onClick={() => router.back()}
-            className="px-6 py-2.5 bg-white border border-slate-200 text-slate-600 font-bold hover:bg-slate-100 rounded-xl transition-all shadow-lg"
-          >
-            Batal
-          </button>
+        <div className="flex flex-col md:flex-row justify-end gap-3 sticky bottom-6 z-10">
           <button
             type="submit"
             disabled={loading}
-            className="flex items-center px-8 py-2.5 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 transition-all shadow-xl shadow-emerald-200 disabled:opacity-70"
+            className="flex items-center justify-center px-8 py-2.5 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 transition-all shadow-xl shadow-emerald-200 disabled:opacity-70"
           >
             {loading ? (
               <Loader2 className="w-4 h-4 mr-2 animate-spin" />
@@ -224,6 +216,15 @@ export default function EditAlbumForm({ album, allGalleryPhotos }: EditAlbumForm
             )}
             Simpan Perubahan
           </button>
+
+          <button
+            type="button"
+            onClick={() => router.back()}
+            className="px-6 py-2.5 bg-red-600 border border-slate-200 text-white font-bold hover:bg-slate-100 rounded-xl transition-all shadow-lg"
+          >
+            Batal
+          </button>
+
         </div>
       </form>
 
@@ -239,7 +240,7 @@ export default function EditAlbumForm({ album, allGalleryPhotos }: EditAlbumForm
               {allGalleryPhotos.map((photo) => {
                 const imageUrl = photo.imageUrl.includes('r2.dev') ? `/api/images/${photo.imageUrl.split('r2.dev/').pop()}` : photo.imageUrl;
                 return (
-                  <div 
+                  <div
                     key={photo.id}
                     onClick={() => {
                       setFormData(prev => ({ ...prev, coverImage: photo.imageUrl }));

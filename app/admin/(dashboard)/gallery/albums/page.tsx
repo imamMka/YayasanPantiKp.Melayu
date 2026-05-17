@@ -73,7 +73,7 @@ export default async function AdminAlbumsPage() {
             </div>
 
             {/* Actions (Floating) */}
-            <div className="absolute top-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col gap-1 translate-x-2 -translate-y-2">
+            <div className="absolute top-0 right-0 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity flex flex-col gap-1 translate-x-2 -translate-y-2">
                <form action={deleteAction}>
                 <input type="hidden" name="id" value={album.id} />
                 <DeleteButton 

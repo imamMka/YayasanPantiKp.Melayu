@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma";
 import Link from "next/link";
-import { Plus, ImageIcon, Calendar, FolderHeart } from "lucide-react";
+import { Plus, ImageIcon, Calendar, FolderHeart, Edit2 } from "lucide-react";
 import { deleteGallery } from "@/lib/actions";
 import DeleteButton from "@/components/DeleteButton";
 import { Gallery } from "@prisma/client";
@@ -23,7 +23,7 @@ export default async function GalleryPage() {
           <h1 className="text-2xl font-bold text-slate-900">Galeri Foto</h1>
           <p className="text-slate-500 text-sm">Kelola dokumentasi kegiatan dan foto anak asuh.</p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-col md:flex-row gap-3">
           <Link
             href="/admin/gallery/albums"
             className="inline-flex items-center justify-center px-4 py-2.5 bg-white text-slate-600 font-semibold rounded-xl hover:bg-slate-50 transition-all border border-slate-200 shadow-sm"
@@ -67,12 +67,18 @@ export default async function GalleryPage() {
                   alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-                   <form action={deleteAction}>
+                <div className="absolute top-3 right-3 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity flex flex-col gap-2">
+                  <Link
+                    href={`/admin/gallery/${item.id}/edit`}
+                    className="p-2 bg-white text-slate-600 rounded-xl hover:bg-slate-50 transition-all shadow-lg border border-slate-100"
+                  >
+                    <Edit2 className="w-4 h-4" />
+                  </Link>
+                  <form action={deleteAction}>
                     <input type="hidden" name="id" value={item.id} />
-                    <DeleteButton 
-                      confirmMessage="Hapus foto ini dari galeri?" 
-                      className="p-3 bg-red-600 text-white rounded-xl hover:bg-red-700 transition-all shadow-lg"
+                    <DeleteButton
+                      confirmMessage="Hapus foto ini dari galeri?"
+                      className="p-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition-all shadow-lg"
                     />
                   </form>
                 </div>

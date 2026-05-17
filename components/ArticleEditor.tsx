@@ -2,13 +2,13 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { 
-  Save, 
-  Eye, 
-  Edit3, 
-  Type, 
-  Hash, 
-  Tag, 
+import {
+  Save,
+  Eye,
+  Edit3,
+  Type,
+  Hash,
+  Tag,
   Image as ImageIcon,
   ChevronLeft,
   Loader2
@@ -33,7 +33,7 @@ export default function ArticleEditor({ initialData }: ArticleEditorProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [mode, setMode] = useState<"edit" | "preview">("edit");
-  
+
   const [formData, setFormData] = useState({
     title: initialData?.title || "",
     slug: initialData?.slug || "",
@@ -47,7 +47,7 @@ export default function ArticleEditor({ initialData }: ArticleEditorProps) {
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const title = e.target.value;
     const updates: Partial<typeof formData> = { title };
-    
+
     if (!initialData) {
       const slug = title
         .toLowerCase()
@@ -55,7 +55,7 @@ export default function ArticleEditor({ initialData }: ArticleEditorProps) {
         .replace(/ +/g, "-");
       updates.slug = slug;
     }
-    
+
     setFormData(prev => ({ ...prev, ...updates }));
   };
 
@@ -106,15 +106,14 @@ export default function ArticleEditor({ initialData }: ArticleEditorProps) {
             {initialData ? `Edit: ${formData.title}` : "Tulis Artikel Baru"}
           </h1>
         </div>
-        
-        <div className="flex items-center gap-3">
+
+        <div className="flex flex-col md:flex-row items-center gap-3">
           <div className="flex bg-slate-100 p-1 rounded-xl">
             <button
               type="button"
               onClick={() => setMode("edit")}
-              className={`flex items-center px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
-                mode === "edit" ? "bg-white text-emerald-600 shadow-sm" : "text-slate-500 hover:text-slate-700"
-              }`}
+              className={`flex items-center px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${mode === "edit" ? "bg-white text-emerald-600 shadow-sm" : "text-slate-500 hover:text-slate-700"
+                }`}
             >
               <Edit3 className="w-3.5 h-3.5 mr-1.5" />
               Edit
@@ -122,15 +121,14 @@ export default function ArticleEditor({ initialData }: ArticleEditorProps) {
             <button
               type="button"
               onClick={() => setMode("preview")}
-              className={`flex items-center px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
-                mode === "preview" ? "bg-white text-emerald-600 shadow-sm" : "text-slate-500 hover:text-slate-700"
-              }`}
+              className={`flex items-center px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${mode === "preview" ? "bg-white text-emerald-600 shadow-sm" : "text-slate-500 hover:text-slate-700"
+                }`}
             >
               <Eye className="w-3.5 h-3.5 mr-1.5" />
               Preview
             </button>
           </div>
-          
+
           <button
             type="submit"
             disabled={loading}
@@ -166,10 +164,10 @@ export default function ArticleEditor({ initialData }: ArticleEditorProps) {
             <div className="bg-white border border-slate-200 rounded-3xl p-8 md:p-12 shadow-sm min-h-[600px] prose prose-slate max-w-none">
               <h1 className="text-4xl font-bold text-slate-900 mb-6">{formData.title || "Judul Artikel"}</h1>
               {formData.imageUrl && (
-                <img 
-                  src={formData.imageUrl.includes('r2.dev') ? `/api/images/${formData.imageUrl.split('r2.dev/').pop()}` : formData.imageUrl} 
-                  className="w-full aspect-video object-cover rounded-2xl mb-8" 
-                  alt="" 
+                <img
+                  src={formData.imageUrl.includes('r2.dev') ? `/api/images/${formData.imageUrl.split('r2.dev/').pop()}` : formData.imageUrl}
+                  className="w-full aspect-video object-cover rounded-2xl mb-8"
+                  alt=""
                 />
               )}
               <div className="text-slate-700 whitespace-pre-wrap text-xl leading-relaxed">
@@ -186,7 +184,7 @@ export default function ArticleEditor({ initialData }: ArticleEditorProps) {
               <Type className="w-4 h-4 mr-2 text-emerald-500" />
               Informasi Utama
             </h3>
-            
+
             <div className="space-y-4">
               <div>
                 <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5 ml-1">Judul Artikel</label>
@@ -237,14 +235,14 @@ export default function ArticleEditor({ initialData }: ArticleEditorProps) {
               <ImageIcon className="w-4 h-4 mr-2 text-emerald-500" />
               Gambar Unggulan
             </h3>
-            
+
             <div className="space-y-4">
               {formData.imageUrl ? (
                 <div className="relative group rounded-2xl overflow-hidden border border-slate-200">
-                  <img 
-                    src={formData.imageUrl.includes('r2.dev') ? `/api/images/${formData.imageUrl.split('r2.dev/').pop()}` : formData.imageUrl} 
-                    className="w-full aspect-video object-cover" 
-                    alt="" 
+                  <img
+                    src={formData.imageUrl.includes('r2.dev') ? `/api/images/${formData.imageUrl.split('r2.dev/').pop()}` : formData.imageUrl}
+                    className="w-full aspect-video object-cover"
+                    alt=""
                   />
                   <button
                     type="button"
@@ -255,22 +253,22 @@ export default function ArticleEditor({ initialData }: ArticleEditorProps) {
                   </button>
                 </div>
               ) : (
-                <ImageUploader 
-                  onUploadSuccess={({ url, key }) => setFormData(prev => ({ ...prev, imageUrl: url, imageKey: key }))} 
+                <ImageUploader
+                  onUploadSuccess={({ url, key }) => setFormData(prev => ({ ...prev, imageUrl: url, imageKey: key }))}
                 />
               )}
             </div>
           </div>
 
           <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-4">
-             <label className="block text-xs font-bold text-slate-400 uppercase ml-1">Kutipan Singkat (Opsional)</label>
-             <textarea
-                value={formData.quote}
-                onChange={(e) => setFormData(prev => ({ ...prev, quote: e.target.value }))}
-                className="w-full p-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-slate-700 text-sm italic"
-                rows={3}
-                placeholder="Masukkan kutipan menarik dari artikel ini..."
-             />
+            <label className="block text-xs font-bold text-slate-400 uppercase ml-1">Kutipan Singkat (Opsional)</label>
+            <textarea
+              value={formData.quote}
+              onChange={(e) => setFormData(prev => ({ ...prev, quote: e.target.value }))}
+              className="w-full p-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all text-slate-700 text-sm italic"
+              rows={3}
+              placeholder="Masukkan kutipan menarik dari artikel ini..."
+            />
           </div>
         </div>
       </div>

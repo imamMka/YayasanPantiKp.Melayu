@@ -2,29 +2,30 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { 
-  Save, 
-  Type, 
-  Loader2, 
+import {
+  Save,
+  Type,
+  Loader2,
   ChevronLeft,
-  FolderHeart 
+  FolderHeart
 } from "lucide-react";
 import ImageUploader from "@/components/ImageUploader";
-import { createGallery } from "@/lib/actions";
-import { Album } from "@prisma/client";
+import { createGallery, updateGallery } from "@/lib/actions";
+import { Album, Gallery } from "@prisma/client";
 
 interface GalleryFormProps {
   albums: Album[];
+  initialData?: Gallery;
 }
 
-export default function GalleryForm({ albums }: GalleryFormProps) {
+export default function GalleryForm({ albums, initialData }: GalleryFormProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    title: "",
-    imageUrl: "",
-    imageKey: "",
-    albumId: "",
+    title: initialData?.title || "",
+    imageUrl: initialData?.imageUrl || "",
+    imageKey: initialData?.imageKey || "",
+    albumId: initialData?.albumId?.toString() || "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -36,16 +37,25 @@ export default function GalleryForm({ albums }: GalleryFormProps) {
 
     setLoading(true);
     try {
-      await createGallery(
-        formData.title, 
-        formData.imageUrl, 
-        formData.imageKey,
-        formData.albumId ? Number(formData.albumId) : null
-      );
+      if (initialData) {
+        await updateGallery(initialData.id.toString(), {
+          title: formData.title,
+          imageUrl: formData.imageUrl,
+          imageKey: formData.imageKey,
+          albumId: formData.albumId ? Number(formData.albumId) : null,
+        });
+      } else {
+        await createGallery(
+          formData.title,
+          formData.imageUrl,
+          formData.imageKey,
+          formData.albumId ? Number(formData.albumId) : null
+        );
+      }
       router.push("/admin/gallery");
       router.refresh();
     } catch {
-      alert("Gagal mengunggah ke galeri.");
+      alert("Gagal menyimpan ke galeri.");
     } finally {
       setLoading(false);
     }
@@ -61,8 +71,8 @@ export default function GalleryForm({ albums }: GalleryFormProps) {
           <ChevronLeft className="w-5 h-5" />
         </button>
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Unggah Foto Baru</h1>
-          <p className="text-slate-500 text-sm">Tambahkan dokumentasi ke galeri publik.</p>
+          <h1 className="text-2xl font-bold text-slate-900">{initialData ? "Edit Foto" : "Unggah Foto Baru"}</h1>
+          <p className="text-slate-500 text-sm">{initialData ? "Perbarui informasi foto di galeri." : "Tambahkan dokumentasi ke galeri publik."}</p>
         </div>
       </div>
 
@@ -129,11 +139,11 @@ export default function GalleryForm({ albums }: GalleryFormProps) {
           </div>
         </div>
 
-        <div className="flex justify-end gap-3">
+        <div className="flex flex-col-reverse sm:flex-row justify-end gap-3">
           <button
             type="button"
             onClick={() => router.back()}
-            className="px-6 py-2.5 text-slate-600 font-bold hover:bg-slate-100 rounded-xl transition-all"
+            className="px-6 py-2.5 bg-red-600 text-white font-bold hover:bg-slate-100 rounded-xl transition-all"
           >
             Batal
           </button>
@@ -147,7 +157,7 @@ export default function GalleryForm({ albums }: GalleryFormProps) {
             ) : (
               <Save className="w-4 h-4 mr-2" />
             )}
-            Publikasikan ke Galeri
+            {initialData ? "Simpan Perubahan" : "Publikasikan ke Galeri"}
           </button>
         </div>
       </form>

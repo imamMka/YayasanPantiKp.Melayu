@@ -133,7 +133,7 @@ export default function AdminLoginForm() {
           >
             ← Kembali ke Beranda
           </Link>
-          <div className="text-[10px] text-slate-300 font-bold uppercase tracking-[0.2em]">
+          <div className="text-[10px] text-center text-slate-300 font-bold uppercase tracking-[0.2em]">
             Akses Terbatas • © 2026 Yayasan Panti Asuhan
           </div>
         </div>
