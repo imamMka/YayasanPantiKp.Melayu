@@ -28,15 +28,22 @@ Aplikasi ini adalah website informasi untuk `PantiAsuhanKpMelayu` dengan halaman
 
 ## Progress Saat Ini
 
-- Frontend: 100% selesai untuk fitur inti
-  - Dashboard Admin berjalan stabil dan responsif (Mobile-friendly).
-  - Integrasi EmailJS untuk alur pemulihan password (Lupa Password).
-  - Alur Edit dan Update data terintegrasi penuh.
-- Backend: 100% selesai untuk fitur inti
-  - Fitur CRUD lengkap termasuk relasi Album-Galeri.
-  - Pengaturan akun dinamis (Database-driven `Settings`).
-  - Middleware perlindungan rute admin yang solid.
-- Total proyek: Siap rilis / tahap pemeliharaan.
+- **Frontend & UI/UX**:
+  - Dashboard Admin berjalan stabil, responsif, dan *mobile-friendly*.
+  - Integrasi sistem notifikasi **Sonner Toasts** untuk menggantikan alert bawaan browser, memberikan *feedback* visual (Berhasil/Gagal) yang modern pada semua form admin (Pembuatan, Pengeditan, Penghapusan).
+  - Implementasi *Dark/Light Mode* (Opsional pada komponen tertentu) serta konsistensi warna *Emerald* dan *Amber* (Brand Panti Asuhan).
+- **Backend & Keamanan**:
+  - Fitur CRUD lengkap (Create, Read, Update, Delete) termasuk fitur Edit untuk Artikel, Galeri, dan Album/Sorotan yang sudah teruji.
+  - Integrasi EmailJS untuk alur pemulihan password (Lupa Password) via OTP 4-digit.
+  - Pengaturan akun dinamis (Database-driven `Settings`) dengan Middleware perlindungan rute admin yang kokoh.
+
+## Analisis Sistem (End-to-End)
+
+Website Yayasan Panti Kp Melayu dirancang sebagai ekosistem digital komprehensif yang tidak hanya menjadi brosur digital, melainkan portal manajemen aktif.
+1. **Arsitektur Pengelolaan Aset**: Seluruh gambar (Galeri, Cover Berita) tidak disimpan di server utama, melainkan didistribusikan melalui *Cloudflare R2* menggunakan *AWS S3 SDK*. Hal ini memastikan beban server tetap rendah, pemuatan gambar super cepat, dan biaya hosting yang efisien.
+2. **Manajemen Konten (CMS) Berdikari**: Alih-alih bergantung pada CMS pihak ketiga seperti WordPress, website ini memiliki sistem CMS mandiri dengan relasi database PostgreSQL. Galeri bisa dikelompokkan menjadi "Sorotan" tahunan (Album), dan berita memiliki *rich-editor* (walau saat ini menggunakan teks sederhana) serta kategori fleksibel.
+3. **Keamanan Lapis Ganda**: Rute admin (`/admin`) sepenuhnya diproteksi *middleware*. Lupa password tidak lagi mengandalkan akses developer langsung ke database, melainkan dikelola sistem reset mandiri berbasis OTP email dengan tabel pengaturan (`Settings`) mandiri.
+4. **Skalabilitas**: Karena menggunakan Next.js 16 (App Router) dengan RSC (React Server Components) dan Server Actions, alur eksekusi sangat cepat, SEO-friendly, dan siap dikembangkan lebih jauh tanpa restrukturisasi *codebase* besar-besaran.
 
 ## Solusi Masalah Gambar (Development)
 
@@ -48,10 +55,14 @@ export NODE_TLS_REJECT_UNAUTHORIZED=0 && npm run dev
 
 ## Rencana Kerja Berikutnya
 
-1. Optimalisasi performa (caching) tingkat lanjut pada halaman publik.
-2. Finalisasi SEO dan Meta Tags untuk setiap halaman berita agar optimal di mesin pencari.
-3. Penambahan integrasi Payment Gateway untuk donasi langsung (di masa depan).
+**Fokus Utama: Sistem Anak Asuh & Kelola Donasi**
+1. **Model Database Baru**: Membuat skema `Orphan` (Anak Asuh: Nama, Umur, Sekolah, Kisah, Foto) dan `Donation` (Pencatatan Donasi Manual).
+2. **Dashboard Spesifik**: Menambah halaman *Kelola Anak Asuh* dan *Kelola Donasi* di dalam dashboard admin untuk rekapitulasi data panti.
 
+**Optimalisasi Lanjutan**
+3. Optimalisasi performa (caching) tingkat lanjut pada halaman publik.
+4. Finalisasi SEO dan Meta Tags untuk setiap halaman berita agar optimal di mesin pencari.
+5. Penambahan integrasi Payment Gateway otomatis (seperti Midtrans) untuk sistem Donasi Langsung.
 ## Teknologi
 
 - Next.js 16

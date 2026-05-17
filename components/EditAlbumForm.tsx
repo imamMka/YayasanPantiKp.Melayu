@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { updateAlbum } from "@/lib/actions";
 import { Gallery } from "@prisma/client";
+import { toast } from "sonner";
 
 interface EditAlbumFormProps {
   album: any;
@@ -59,11 +60,12 @@ export default function EditAlbumForm({ album, allGalleryPhotos }: EditAlbumForm
         photoIds: selectedPhotoIds
       });
 
+      toast.success("Sorotan berhasil diperbarui!");
       router.push("/admin/gallery/albums");
       router.refresh();
     } catch (err) {
       console.error(err);
-      alert("Gagal memperbarui album.");
+      toast.error("Gagal memperbarui album.");
     } finally {
       setLoading(false);
     }

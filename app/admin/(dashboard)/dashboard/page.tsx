@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { 
+import {
   Info,
   X,
   FileText,
@@ -65,7 +65,7 @@ export default function DashboardOverview() {
         <TrendingUp className="w-5 h-5 mr-2 text-emerald-500" />
         Bantuan & Panduan
       </h3>
-      
+
       <div className="bg-emerald-900 text-white p-8 rounded-3xl shadow-xl relative overflow-hidden">
         <div className="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
         <div className="relative z-10 space-y-4">
@@ -84,7 +84,7 @@ export default function DashboardOverview() {
               </p>
             </div>
           </div>
-          <a 
+          <a
             href="mailto:imammka23@gmail.com?subject=Bantuan Dashboard Admin Panti"
             className="block w-full py-3 bg-white text-emerald-900 text-center font-bold rounded-xl shadow-lg hover:bg-emerald-50 transition-all"
           >
@@ -92,7 +92,7 @@ export default function DashboardOverview() {
           </a>
         </div>
       </div>
-      
+
       <div className="bg-white border border-slate-200 p-6 rounded-3xl shadow-sm space-y-4">
         <h4 className="font-bold text-slate-900 flex items-center gap-2">
           <Clock className="w-4 h-4 text-emerald-500" />
@@ -108,7 +108,7 @@ export default function DashboardOverview() {
               Gunakan fitur "Lupa Password" di halaman login. Kode dikirim ke email pemulihan.
             </p>
           </details>
-          
+
           <details className="group border-b border-slate-100 pb-3">
             <summary className="list-none cursor-pointer flex items-center justify-between font-bold text-xs text-slate-700">
               Cara buat Sorotan?
@@ -119,11 +119,13 @@ export default function DashboardOverview() {
             </p>
           </details>
         </div>
-        
+
         <div className="pt-2 text-center">
           <p className="text-[10px] text-slate-400">
-            Kontak Teknis: <span className="font-bold text-slate-600">imammka23@gmail.com</span>
+            Kontak Teknis: <a href="mailto:imammka23@gmail.com" className="font-bold text-slate-600">imammka23@gmail.com</a>
           </p>
+          <p className="text-[10px] text-slate-400">Dashboard Version: V.1.3</p>
+
         </div>
       </div>
     </div>
@@ -187,10 +189,10 @@ export default function DashboardOverview() {
                 {data.recentNews.map((item: any) => (
                   <div key={item.id} className="p-4 hover:bg-slate-50 transition-colors flex items-center gap-4">
                     <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-slate-100 border border-slate-200">
-                      <img 
-                        src={item.imageUrl.includes('r2.dev') ? `/api/images/${item.imageUrl.split('r2.dev/').pop()}` : item.imageUrl} 
-                        className="w-full h-full object-cover" 
-                        alt="" 
+                      <img
+                        src={item.imageUrl.includes('r2.dev') ? `/api/images/${item.imageUrl.split('r2.dev/').pop()}` : item.imageUrl}
+                        className="w-full h-full object-cover"
+                        alt=""
                       />
                     </div>
                     <div className="min-w-0 flex-1">
@@ -221,7 +223,7 @@ export default function DashboardOverview() {
       {/* Mobile Help Sidebar Overlay */}
       {showMobileHelp && (
         <>
-          <div 
+          <div
             className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] lg:hidden"
             onClick={() => setShowMobileHelp(false)}
           />
@@ -231,7 +233,7 @@ export default function DashboardOverview() {
                 <HelpCircle className="w-6 h-6" />
                 HELP CENTER
               </div>
-              <button 
+              <button
                 onClick={() => setShowMobileHelp(false)}
                 className="p-2 bg-white rounded-xl shadow-sm text-slate-400 hover:text-slate-600"
               >

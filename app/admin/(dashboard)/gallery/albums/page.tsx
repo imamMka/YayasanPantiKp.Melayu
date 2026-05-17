@@ -14,11 +14,7 @@ export default async function AdminAlbumsPage() {
     orderBy: { year: "desc" }
   });
 
-  async function deleteAction(formData: FormData) {
-    "use server";
-    const id = formData.get("id") as string;
-    if (id) await deleteAlbum(Number(id));
-  }
+  // We will pass deleteAlbum directly to the client component
 
   return (
     <div className="space-y-6">
@@ -74,13 +70,12 @@ export default async function AdminAlbumsPage() {
 
             {/* Actions (Floating) */}
             <div className="absolute top-0 right-0 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity flex flex-col gap-1 translate-x-2 -translate-y-2">
-               <form action={deleteAction}>
-                <input type="hidden" name="id" value={album.id} />
-                <DeleteButton 
-                  confirmMessage={`Hapus album "${album.title}"? (Foto-foto di dalamnya tidak akan terhapus)`}
-                  className="p-2 bg-red-600 text-white rounded-lg shadow-lg hover:bg-red-700"
-                />
-              </form>
+              <DeleteButton 
+                confirmMessage={`Hapus album "${album.title}"? (Foto-foto di dalamnya tidak akan terhapus)`}
+                className="p-2 bg-red-600 text-white rounded-lg shadow-lg hover:bg-red-700"
+                actionFn={deleteAlbum}
+                id={album.id}
+              />
               <Link 
                 href={`/admin/gallery/albums/${album.id}/edit`}
                 className="p-2 bg-white text-slate-600 rounded-lg shadow-lg border border-slate-100 hover:bg-slate-50"

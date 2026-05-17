@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import ImageUploader from "@/components/ImageUploader";
 import { createNews, updateNews } from "@/lib/actions";
+import { toast } from "sonner";
 
 interface ArticleEditorProps {
   initialData?: {
@@ -62,7 +63,7 @@ export default function ArticleEditor({ initialData }: ArticleEditorProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.title || !formData.slug || !formData.content || !formData.imageUrl) {
-      alert("Mohon lengkapi semua data wajib (Judul, Slug, Konten, & Gambar)");
+      toast.error("Mohon lengkapi semua data wajib (Judul, Slug, Konten, & Gambar)");
       return;
     }
 
@@ -81,10 +82,11 @@ export default function ArticleEditor({ initialData }: ArticleEditorProps) {
           formData.imageKey
         );
       }
+      toast.success(initialData?.id ? "Artikel berhasil diperbarui!" : "Artikel berhasil diterbitkan!");
       router.push("/admin/articles");
       router.refresh();
     } catch {
-      alert("Gagal menyimpan artikel. Silakan coba lagi.");
+      toast.error("Gagal menyimpan artikel. Silakan coba lagi.");
     } finally {
       setLoading(false);
     }

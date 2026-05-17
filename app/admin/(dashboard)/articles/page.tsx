@@ -10,11 +10,7 @@ export default async function ArticlesPage() {
     orderBy: { createdAt: "desc" },
   });
 
-  async function deleteAction(formData: FormData) {
-    "use server";
-    const id = formData.get("id") as string;
-    if (id) await deleteNews(id);
-  }
+  // We will pass deleteNews directly to the client component
 
   return (
     <div className="space-y-6">
@@ -95,10 +91,11 @@ export default async function ArticlesPage() {
                       >
                         <Edit className="w-5 h-5" />
                       </Link>
-                      <form action={deleteAction} className="inline">
-                        <input type="hidden" name="id" value={item.id} />
-                        <DeleteButton confirmMessage="Hapus artikel ini? Tindakan ini tidak dapat dibatalkan." />
-                      </form>
+                      <DeleteButton 
+                        confirmMessage="Hapus artikel ini? Tindakan ini tidak dapat dibatalkan."
+                        actionFn={deleteNews}
+                        id={item.id.toString()}
+                      />
                     </td>
                   </tr>
                 ))

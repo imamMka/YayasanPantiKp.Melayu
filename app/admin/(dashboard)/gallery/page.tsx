@@ -10,11 +10,7 @@ export default async function GalleryPage() {
     orderBy: { createdAt: "desc" },
   });
 
-  async function deleteAction(formData: FormData) {
-    "use server";
-    const id = formData.get("id") as string;
-    if (id) await deleteGallery(id);
-  }
+  // We will pass deleteGallery directly to the client component
 
   return (
     <div className="space-y-6">
@@ -74,13 +70,12 @@ export default async function GalleryPage() {
                   >
                     <Edit2 className="w-4 h-4" />
                   </Link>
-                  <form action={deleteAction}>
-                    <input type="hidden" name="id" value={item.id} />
-                    <DeleteButton
-                      confirmMessage="Hapus foto ini dari galeri?"
-                      className="p-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition-all shadow-lg"
-                    />
-                  </form>
+                  <DeleteButton
+                    confirmMessage="Hapus foto ini dari galeri?"
+                    className="p-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition-all shadow-lg"
+                    actionFn={deleteGallery}
+                    id={item.id.toString()}
+                  />
                 </div>
               </div>
               <div className="p-4 space-y-2">

@@ -12,6 +12,7 @@ import {
 import ImageUploader from "@/components/ImageUploader";
 import { createGallery, updateGallery } from "@/lib/actions";
 import { Album, Gallery } from "@prisma/client";
+import { toast } from "sonner";
 
 interface GalleryFormProps {
   albums: Album[];
@@ -31,7 +32,7 @@ export default function GalleryForm({ albums, initialData }: GalleryFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.title || !formData.imageUrl) {
-      alert("Mohon lengkapi judul dan unggah gambar.");
+      toast.error("Mohon lengkapi judul dan unggah gambar.");
       return;
     }
 
@@ -52,10 +53,11 @@ export default function GalleryForm({ albums, initialData }: GalleryFormProps) {
           formData.albumId ? Number(formData.albumId) : null
         );
       }
+      toast.success(initialData ? "Foto berhasil diperbarui!" : "Foto berhasil ditambahkan ke galeri!");
       router.push("/admin/gallery");
       router.refresh();
     } catch {
-      alert("Gagal menyimpan ke galeri.");
+      toast.error("Gagal menyimpan ke galeri.");
     } finally {
       setLoading(false);
     }

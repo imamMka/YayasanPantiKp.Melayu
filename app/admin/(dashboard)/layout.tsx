@@ -12,6 +12,7 @@ import {
   Menu,
   Shield
 } from "lucide-react";
+import { Toaster } from "sonner";
 
 export default function AdminLayout({
   children,
@@ -41,6 +42,7 @@ export default function AdminLayout({
 
   return (
     <div className="min-h-screen bg-white flex font-sans">
+      <Toaster position="top-right" richColors />
       {/* Mobile Sidebar Overlay */}
       {isSidebarOpen && (
         <div

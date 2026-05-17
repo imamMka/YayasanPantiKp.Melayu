@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { createAlbum } from "@/lib/actions";
 import { Gallery } from "@prisma/client";
+import { toast } from "sonner";
 
 interface NewAlbumFormProps {
   allGalleryPhotos: Gallery[];
@@ -47,7 +48,7 @@ export default function NewAlbumForm({ allGalleryPhotos }: NewAlbumFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.title || !formData.year) {
-      alert("Mohon lengkapi judul dan tahun.");
+      toast.error("Mohon lengkapi judul dan tahun.");
       return;
     }
 
@@ -60,10 +61,11 @@ export default function NewAlbumForm({ allGalleryPhotos }: NewAlbumFormProps) {
         coverImage: formData.coverImage,
         photoIds: selectedPhotoIds
       });
+      toast.success("Sorotan berhasil dibuat!");
       router.push("/admin/gallery/albums");
       router.refresh();
     } catch {
-      alert("Gagal membuat album.");
+      toast.error("Gagal membuat album.");
     } finally {
       setLoading(false);
     }

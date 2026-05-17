@@ -57,19 +57,19 @@ const Navbar: React.FC = () => {
         <div className="hidden md:flex gap-6 items-center">
           <Link
             href="/profile"
-            className="text-[16px] lg:text-[20px] hover:text-[#4A6B55] transition-colors"
+            className="text-[16px] lg:text-[20px] hover:text-amber-500 transition-colors"
           >
             Profil
           </Link>
           <Link
             href="/news"
-            className="text-[16px] lg:text-[20px] hover:text-[#4A6B55] transition-colors"
+            className="text-[16px] lg:text-[20px] hover:text-amber-500 transition-colors"
           >
             Berita
           </Link>
           <Link
             href="/gallery"
-            className="text-[16px] lg:text-[20px] hover:text-[#4A6B55] transition-colors"
+            className="text-[16px] lg:text-[20px] hover:text-amber-500 transition-colors"
           >
             Galeri
           </Link>
