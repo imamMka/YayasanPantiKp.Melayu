@@ -56,6 +56,16 @@ export default function MasonryGallery({ galleryItems }: MasonryGalleryProps) {
   const [displayCount, setDisplayCount] = useState(1);
   const maxRepeats = 3;
 
+  if (galleryItems && galleryItems.length === 0) {
+    return (
+      <section className="py-10">
+        <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center my-12">
+          <p className="text-slate-400 italic text-lg">belum ada foto di gallery ini</p>
+        </div>
+      </section>
+    );
+  }
+
   const DISPLAY_IMAGES = galleryItems?.length
     ? galleryItems.map((item) => ({
         id: String(item.id),

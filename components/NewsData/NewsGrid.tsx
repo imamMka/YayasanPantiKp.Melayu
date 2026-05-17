@@ -17,7 +17,7 @@ export default function NewsGrid({ data }: { data: NewsItem[] }) {
   if (!data || !Array.isArray(data) || data.length === 0) {
     return (
       <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center">
-        <p className="text-slate-400 italic text-lg">Belum ada berita yang diterbitkan.</p>
+        <p className="text-slate-400 italic text-lg">belum ada artikel yang diterbitkan</p>
       </div>
     );
   }

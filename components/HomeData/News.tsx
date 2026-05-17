@@ -22,7 +22,12 @@ const News: React.FC<NewsProps> = ({ articles = [] }) => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {articles.map((item) => {
+        {articles.length === 0 ? (
+          <div className="col-span-1 md:col-span-3 bg-white border border-slate-200 rounded-3xl p-12 text-center">
+            <p className="text-slate-400 italic text-lg">belum ada artikel yang diterbitkan</p>
+          </div>
+        ) : (
+          articles.map((item) => {
           const imageUrl = item.imageUrl.includes('r2.dev') 
             ? `/api/images/${item.imageUrl.split('r2.dev/').pop()}` 
             : item.imageUrl;
@@ -59,7 +64,8 @@ const News: React.FC<NewsProps> = ({ articles = [] }) => {
               </div>
             </Link>
           );
-        })}
+        })
+        )}
       </div>
     </section>
   );

@@ -43,7 +43,7 @@ export default async function GalleryPage() {
             <ImageIcon className="w-8 h-8 text-slate-300" />
           </div>
           <div>
-            <h3 className="font-bold text-slate-900">Belum ada foto</h3>
+            <h3 className="font-bold text-slate-900">belum ada foto di gallery ini</h3>
             <p className="text-slate-400 text-sm max-w-xs mx-auto">Mulai unggah dokumentasi kegiatan pertama Anda untuk ditampilkan di galeri publik.</p>
           </div>
           <Link

@@ -44,7 +44,7 @@ export default async function ArticlesPage() {
               {articles.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="px-6 py-12 text-center text-slate-400 italic">
-                    Belum ada artikel. Mulai tulis artikel pertama Anda!
+                    belum ada artikel yang diterbitkan
                   </td>
                 </tr>
               ) : (

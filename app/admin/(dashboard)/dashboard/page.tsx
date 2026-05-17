@@ -183,7 +183,7 @@ export default function DashboardOverview() {
 
           <div className="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm">
             {data.recentNews.length === 0 ? (
-              <div className="p-12 text-center text-slate-400 italic">Belum ada artikel.</div>
+              <div className="p-12 text-center text-slate-400 italic">belum ada artikel yang diterbitkan</div>
             ) : (
               <div className="divide-y divide-slate-100">
                 {data.recentNews.map((item: any) => (

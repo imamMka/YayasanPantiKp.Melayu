@@ -26,7 +26,12 @@ const Gallery: React.FC<GalleryProps> = ({ items = [], totalCount = 0 }) => {
 
       {/* Grid Gallery */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {items.map((item, index) => {
+        {items.length === 0 ? (
+          <div className="col-span-2 md:col-span-4 bg-white border border-slate-200 rounded-3xl p-12 text-center">
+            <p className="text-slate-400 italic text-lg">belum ada foto di gallery ini</p>
+          </div>
+        ) : (
+          items.map((item, index) => {
           const imageUrl = item.imageUrl.includes('r2.dev') 
             ? `/api/images/${item.imageUrl.split('r2.dev/').pop()}` 
             : item.imageUrl;
@@ -61,7 +66,8 @@ const Gallery: React.FC<GalleryProps> = ({ items = [], totalCount = 0 }) => {
               )}
             </Link>
           );
-        })}
+        })
+        )}
       </div>
     </section>
   );
